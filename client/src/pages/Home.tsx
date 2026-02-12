@@ -320,7 +320,7 @@ export default function Home() {
       </p>
     </div>
   </div>
-
+</div>
   {/* Desktop: Full Navigation + Theme */}
   <div className="hidden md:flex gap-8 items-center">
     <nav className="flex gap-6 items-center">
@@ -343,7 +343,6 @@ export default function Home() {
         </button>
       ))}
     </nav>
-
   </div>
       </header>
 
