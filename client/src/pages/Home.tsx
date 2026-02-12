@@ -324,7 +324,7 @@ export default function Home() {
   {/* Desktop: Full Navigation + Theme */}
   <div className="hidden md:flex gap-8 items-center">
     <nav className="flex gap-6 items-center">
-      <nav className="hidden md:flex gap-6 items-center">
+      <nav className="hidden md:flex gap-4 items-center">
   {["about", "stats", "timeline", "projects", "skills", "faq", "contact"].map((item) => (
     <button
       key={item}
@@ -353,11 +353,13 @@ export default function Home() {
 
 <button
   onClick={toggleTheme}
-  className={`p-2 transition-all duration-300 transform hover:scale-110 ${
-    theme === "dark"
-      ? "text-yellow-400 hover:text-yellow-300"
-      : "text-gray-700 hover:text-blue-600"
-  }`}
+className={`p-2 transition-all duration-300 transform hover:scale-110 ${
+  theme === "dark"
+    ? "text-yellow-400 hover:text-yellow-300"
+    : "text-gray-700 hover:text-blue-600"
+}`}
+
+
   title={theme === "dark" ? "Light mode" : "Dark mode"}
 >
   {theme === "dark" ? (
