@@ -345,30 +345,30 @@ export default function Home() {
     </nav>
 
     <button
-      onClick={toggleTheme}
-      className={`p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 ${
-        theme === "dark"
-          ? "bg-gray-800/50 hover:bg-gray-700/50 text-yellow-400 shadow-lg shadow-yellow-400/20"
-          : "bg-gray-100/50 hover:bg-gray-200/50 text-gray-700 shadow-lg shadow-blue-400/10"
-      }`}
-      title={theme === "dark" ? "Light mode" : "Dark mode"}
-    >
-      {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-    </button>
+  onClick={toggleTheme}
+  className={`p-2 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+    theme === "dark"
+      ? "text-yellow-400 hover:text-yellow-300"
+      : "text-gray-700 hover:text-blue-600"
+  }`}
+  title={theme === "dark" ? "Light mode" : "Dark mode"}
+>
+  {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+</button>
   </div>
 
   {/* Mobile: Only Theme Toggle */}
   <button
-    onClick={toggleTheme}
-    className={`md:hidden p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 ${
-      theme === "dark"
-        ? "bg-gray-800/50 hover:bg-gray-700/50 text-yellow-400 shadow-lg shadow-yellow-400/20"
-        : "bg-gray-100/50 hover:bg-gray-200/50 text-gray-700 shadow-lg shadow-blue-400/10"
-    }`}
-    title={theme === "dark" ? "Light mode" : "Dark mode"}
-  >
-    {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-  </button>
+  onClick={toggleTheme}
+  className={`p-2 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+    theme === "dark"
+      ? "text-yellow-400 hover:text-yellow-300"
+      : "text-gray-700 hover:text-blue-600"
+  }`}
+  title={theme === "dark" ? "Light mode" : "Dark mode"}
+>
+  {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+</button>
 </div>
       </header>
 
