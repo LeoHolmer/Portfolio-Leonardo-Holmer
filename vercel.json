@@ -1,7 +1,6 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "react",
+  "outputDirectory": "dist/public",
   "env": {
     "VITE_APP_ID": "Portfolio-Leonardo-Holmer",
     "VITE_APP_TITLE": "Leonardo Holmer - Backend Developer",
@@ -11,3 +10,4 @@
     "VITE_FRONTEND_FORGE_API_KEY": ""
   }
 }
+
