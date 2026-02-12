@@ -101,7 +101,7 @@ export default function Home() {
   const stats = [
     { label: "Projects Completed", value: "3+", icon: <Briefcase className="w-6 h-6" />, color: "from-blue-500 to-cyan-500" },
     { label: "Lines of Code", value: "10K+", icon: <Code className="w-6 h-6" />, color: "from-emerald-500 to-teal-500" },
-    { label: "Years of Experience", value: "2+", icon: <TrendingUp className="w-6 h-6" />, color: "from-orange-500 to-red-500" },
+    { label: "Years of Experience", value: "4+", icon: <TrendingUp className="w-6 h-6" />, color: "from-orange-500 to-red-500" },
     { label: "Uptime Rate", value: "99.9%", icon: <CheckCircle className="w-6 h-6" />, color: "from-purple-500 to-pink-500" },
   ];
 
@@ -236,7 +236,7 @@ export default function Home() {
   const skills: Skill[] = [
     {
       category: "Languages & Frameworks",
-      items: ["Java 11+", "Spring Boot", "Spring Security", "Spring Data JPA", "REST APIs", "Maven"],
+      items: ["Java 17+", "Spring Boot", "Spring Security", "Spring Data JPA", "REST APIs", "Maven"],
       icon: <Code className="w-6 h-6" />,
       color: "from-blue-500 to-blue-600",
     },
@@ -320,28 +320,53 @@ export default function Home() {
       </p>
     </div>
   </div>
-</div>
+</div>  
   {/* Desktop: Full Navigation + Theme */}
   <div className="hidden md:flex gap-8 items-center">
     <nav className="flex gap-6 items-center">
-      {["about", "stats", "timeline", "projects", "skills", "faq", "contact"].map((item) => (
-        <button
-          key={item}
-          onClick={() => scrollToSection(item)}
-          className={`text-xs font-semibold transition-all duration-300 relative group whitespace-nowrap uppercase tracking-wide ${
-            activeSection === item
-              ? "text-blue-600"
-              : theme === "dark"
-              ? "text-gray-400 hover:text-gray-100"
-              : "text-gray-600 hover:text-gray-900"
-          }`}
-        >
-          {item === "stats" ? "Stats" : item === "timeline" ? "Timeline" : item === "faq" ? "FAQ" : item.charAt(0).toUpperCase() + item.slice(1)}
-          {activeSection === item && (
-            <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full shadow-lg shadow-blue-500/50" />
-          )}
-        </button>
-      ))}
+      <nav className="hidden md:flex gap-6 items-center">
+  {["about", "stats", "timeline", "projects", "skills", "faq", "contact"].map((item) => (
+    <button
+      key={item}
+      onClick={() => scrollToSection(item)}
+      className={`text-xs font-semibold transition-all duration-300 relative group whitespace-nowrap uppercase tracking-wide ${
+        activeSection === item
+          ? "text-blue-600"
+          : theme === "dark"
+          ? "text-gray-400 hover:text-gray-100"
+          : "text-gray-600 hover:text-gray-900"
+      }`}
+    >
+      {item === "stats"
+        ? "Stats"
+        : item === "timeline"
+        ? "Timeline"
+        : item === "faq"
+        ? "FAQ"
+        : item.charAt(0).toUpperCase() + item.slice(1)}
+      {activeSection === item && (
+        <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full shadow-lg shadow-blue-500/50" />
+      )}
+    </button>
+  ))}
+</nav>
+
+<button
+  onClick={toggleTheme}
+  className={`p-2 transition-all duration-300 transform hover:scale-110 ${
+    theme === "dark"
+      ? "text-yellow-400 hover:text-yellow-300"
+      : "text-gray-700 hover:text-blue-600"
+  }`}
+  title={theme === "dark" ? "Light mode" : "Dark mode"}
+>
+  {theme === "dark" ? (
+    <Sun className="w-5 h-5" />
+  ) : (
+    <Moon className="w-5 h-5" />
+  )}
+</button>
+
     </nav>
   </div>
       </header>
