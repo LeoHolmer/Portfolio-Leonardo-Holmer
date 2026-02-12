@@ -74,7 +74,7 @@ const projectsData: Record<string, ProjectDetailData> = {
 TaskFlow is a robust REST API for task management, built with backend development best practices.
 
 ## Technical Stack
-- **Backend**: Java 11+, Spring Boot 3.x
+- **Backend**: Java 17+, Spring Boot 3.x
 - **Database**: PostgreSQL
 - **Testing**: JUnit 5, Mockito
 - **Containerization**: Docker, Docker Compose
@@ -214,7 +214,7 @@ Each important change generates a domain event:
 - Closed events cannot be modified
 
 ## Technical Stack
-- Java 11+
+- Java 17+
 - Spring Boot 3.x
 - Spring Security
 - JPA/Hibernate
@@ -316,7 +316,7 @@ AllMusic is a REST API for a music streaming platform with complete user and con
 - Advanced filters
 
 ## Technical Stack
-- Java 11+
+- Java 17+
 - Spring Boot 3.x
 - PostgreSQL
 - JWT for authentication
