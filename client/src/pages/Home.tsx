@@ -305,76 +305,62 @@ export default function Home() {
             : "bg-white/50 border-b border-gray-200/20 backdrop-blur-md"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3 group cursor-pointer hover:opacity-80 transition-opacity duration-300">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-110 group-hover:rotate-12">
-              <Terminal className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h1
-                className={`text-lg font-bold transition-colors duration-300 ${
-                  theme === "dark" ? "text-gray-100" : "text-gray-900"
-                }`}
-              >
-                Leonardo Holmer
-              </h1>
-              <p
-                className={`text-xs font-semibold transition-colors duration-300 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent ${
-                  theme === "dark" ? "" : ""
-                }`}
-              >
-                Backend Developer
-              </p>
-            </div>
-          </div>
-
-          {/* Mobile Navigation + Theme Toggle */}
-<nav className="flex gap-3 md:gap-4 items-center">
-  {/* Mobile Menu */}
-  <div className="md:hidden flex gap-2 overflow-x-auto pb-1">
-    {["about", "stats", "projects", "skills", "contact"].map((item) => (
-      <button
-        key={item}
-        onClick={() => scrollToSection(item)}
-        className={`text-xs font-bold transition-all duration-300 px-2 py-1 rounded-md whitespace-nowrap ${
-          activeSection === item
-            ? "bg-blue-600 text-white shadow-lg shadow-blue-500/50"
-            : theme === "dark"
-            ? "bg-gray-700/50 text-gray-300 hover:bg-gray-600/50"
-            : "bg-gray-200/50 text-gray-700 hover:bg-gray-300/50"
-        }`}
-      >
-        {item.charAt(0).toUpperCase() + item.slice(1)}
-      </button>
-    ))}
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+  {/* Logo + Name */}
+  <div className="flex items-center gap-3 group cursor-pointer hover:opacity-80 transition-opacity duration-300">
+    <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-110 group-hover:rotate-12">
+      <Terminal className="w-5 h-5 text-white" />
+    </div>
+    <div>
+      <h1 className={`text-lg font-bold transition-colors duration-300 ${theme === "dark" ? "text-gray-100" : "text-gray-900"}`}>
+        Leonardo Holmer
+      </h1>
+      <p className="text-xs font-semibold transition-colors duration-300 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
+        Backend Developer
+      </p>
+    </div>
   </div>
 
-  {/* Desktop Navigation */}
-  <nav className="hidden md:flex gap-6 items-center">
-    {["about", "stats", "timeline", "projects", "skills", "faq", "contact"].map((item) => (
-      <button
-        key={item}
-        onClick={() => scrollToSection(item)}
-        className={`text-xs font-semibold transition-all duration-300 relative group whitespace-nowrap uppercase tracking-wide ${
-          activeSection === item
-            ? "text-blue-600"
-            : theme === "dark"
-            ? "text-gray-400 hover:text-gray-100"
-            : "text-gray-600 hover:text-gray-900"
-        }`}
-      >
-        {item === "stats" ? "Stats" : item === "timeline" ? "Timeline" : item === "faq" ? "FAQ" : item.charAt(0).toUpperCase() + item.slice(1)}
-        {activeSection === item && (
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full shadow-lg shadow-blue-500/50" />
-        )}
-      </button>
-    ))}
-  </nav>
+  {/* Desktop: Full Navigation + Theme */}
+  <div className="hidden md:flex gap-8 items-center">
+    <nav className="flex gap-6 items-center">
+      {["about", "stats", "timeline", "projects", "skills", "faq", "contact"].map((item) => (
+        <button
+          key={item}
+          onClick={() => scrollToSection(item)}
+          className={`text-xs font-semibold transition-all duration-300 relative group whitespace-nowrap uppercase tracking-wide ${
+            activeSection === item
+              ? "text-blue-600"
+              : theme === "dark"
+              ? "text-gray-400 hover:text-gray-100"
+              : "text-gray-600 hover:text-gray-900"
+          }`}
+        >
+          {item === "stats" ? "Stats" : item === "timeline" ? "Timeline" : item === "faq" ? "FAQ" : item.charAt(0).toUpperCase() + item.slice(1)}
+          {activeSection === item && (
+            <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full shadow-lg shadow-blue-500/50" />
+          )}
+        </button>
+      ))}
+    </nav>
 
-  {/* Theme Toggle */}
+    <button
+      onClick={toggleTheme}
+      className={`p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+        theme === "dark"
+          ? "bg-gray-800/50 hover:bg-gray-700/50 text-yellow-400 shadow-lg shadow-yellow-400/20"
+          : "bg-gray-100/50 hover:bg-gray-200/50 text-gray-700 shadow-lg shadow-blue-400/10"
+      }`}
+      title={theme === "dark" ? "Light mode" : "Dark mode"}
+    >
+      {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+    </button>
+  </div>
+
+  {/* Mobile: Only Theme Toggle */}
   <button
     onClick={toggleTheme}
-    className={`p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 flex-shrink-0 ${
+    className={`md:hidden p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 ${
       theme === "dark"
         ? "bg-gray-800/50 hover:bg-gray-700/50 text-yellow-400 shadow-lg shadow-yellow-400/20"
         : "bg-gray-100/50 hover:bg-gray-200/50 text-gray-700 shadow-lg shadow-blue-400/10"
@@ -383,9 +369,7 @@ export default function Home() {
   >
     {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
   </button>
-</nav>
-
-        </div>
+</div>
       </header>
 
       {/* Hero Section - Mejorado */}
