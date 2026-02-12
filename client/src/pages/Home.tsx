@@ -344,17 +344,6 @@ export default function Home() {
       ))}
     </nav>
 
-    <button
-  onClick={toggleTheme}
-  className={`p-2 rounded-lg transition-all duration-300 transform hover:scale-110 ${
-    theme === "dark"
-      ? "text-yellow-400 hover:text-yellow-300"
-      : "text-gray-700 hover:text-blue-600"
-  }`}
-  title={theme === "dark" ? "Light mode" : "Dark mode"}
->
-  {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-</button>
   </div>
 
   {/* Mobile: Only Theme Toggle */}
