@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "react",
+  "env": {
+    "VITE_APP_ID": "Portfolio-Leonardo-Holmer",
+    "VITE_APP_TITLE": "Leonardo Holmer - Backend Developer",
+    "VITE_ANALYTICS_ENDPOINT": "",
+    "VITE_ANALYTICS_WEBSITE_ID": "",
+    "VITE_FRONTEND_FORGE_API_URL": "",
+    "VITE_FRONTEND_FORGE_API_KEY": ""
+  }
+}
