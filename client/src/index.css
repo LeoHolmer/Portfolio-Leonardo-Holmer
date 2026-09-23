@@ -239,12 +239,7 @@
   }
   
   .card-glass {
-    @apply backdrop-blur-sm border border-white/20 rounded-xl;
-  }
-  
-  /* Smooth transitions */
-  * {
-    @apply transition-colors duration-300;
+    @apply backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 rounded-xl;
   }
 }
 

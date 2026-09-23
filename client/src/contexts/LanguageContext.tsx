@@ -5,33 +5,39 @@ export type Language = "es" | "en";
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  toggleLanguage: () => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("es");
-  const [mounted, setMounted] = useState(false);
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("portfolio_lang") as Language | null;
+      if (saved === "es" || saved === "en") {
+        return saved;
+      }
+    }
+    return "es"; // Español por defecto
+  });
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem("language") as Language | null;
-    if (savedLanguage && (savedLanguage === "es" || savedLanguage === "en")) {
-      setLanguageState(savedLanguage);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("portfolio_lang", language);
+      document.documentElement.lang = language;
     }
-    setMounted(true);
-  }, []);
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("language", lang);
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
+  const toggleLanguage = () => {
+    setLanguageState((prev) => (prev === "es" ? "en" : "es"));
+  };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -40,7 +46,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (!context) {
-    return { language: "es" as Language, setLanguage: () => {} };
+    return {
+      language: "es" as Language,
+      setLanguage: () => {},
+      toggleLanguage: () => {},
+    };
   }
   return context;
 }

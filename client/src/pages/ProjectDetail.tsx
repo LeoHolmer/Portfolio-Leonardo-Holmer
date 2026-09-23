@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "wouter";
+import { useParams, useLocation, Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,558 +6,374 @@ import {
   ArrowLeft,
   Github,
   ExternalLink,
-  Code,
-  GitBranch,
-  Zap,
+  Shield,
   Layers,
-  Moon,
+  Cpu,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+  Terminal,
   Sun,
+  Moon,
+  Globe,
+  ArrowRight,
+  Database,
+  Lock,
 } from "lucide-react";
-import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
-
-interface ProjectDetailData {
-  id: string;
-  title: string;
-  description: string;
-  longDescription: string;
-  technologies: string[];
-  github: string;
-  highlights: string[];
-  icon: React.ReactNode;
-  readme: string;
-  features: string[];
-  challenges: string[];
-  solutions: string[];
-}
-
-const projectsData: Record<string, ProjectDetailData> = {
-  taskflow: {
-    id: "taskflow",
-    title: "TaskFlow API",
-    description: "REST API for task management with clean architecture and rigorous validations",
-    longDescription:
-      "TaskFlow is a complete REST API for task management built with Java and Spring Boot, implementing clean architecture, advanced design patterns, and production best practices.",
-    technologies: ["Java", "Spring Boot", "PostgreSQL", "Docker", "JWT", "JUnit", "Maven"],
-    github: "https://github.com/LeoHolmer/taskflow-api",
-    highlights: [
-      "Clean architecture with layer separation (Controller → Service → Repository)",
-      "JWT authentication with role-based access control (RBAC)",
-      "Soft delete, change auditing, and unit/integration tests >85%",
-      "Dockerized application with docker-compose for multiple environments",
-    ],
-    icon: <GitBranch className="w-6 h-6" />,
-    features: [
-      "Complete CRUD for tasks with exhaustive validations",
-      "User system with JWT authentication",
-      "Granular roles and permissions (Admin, User, Guest)",
-      "Change auditing with timestamps and responsible user",
-      "Soft delete to preserve data integrity",
-      "Advanced pagination and filtering",
-      "Swagger/OpenAPI documentation",
-    ],
-    challenges: [
-      "Implementing clean architecture without over-engineering",
-      "Maintaining test coverage >85% without sacrificing development speed",
-      "Handling concurrency in critical operations",
-      "Ensuring security without compromising usability",
-    ],
-    solutions: [
-      "Clear separation of concerns with DTOs and mappers",
-      "Using JUnit 5 and Mockito for robust testing",
-      "Implementing optimistic locking with versions",
-      "Multi-layer validation (Bean Validation, business logic)",
-    ],
-    readme: `# TaskFlow API
-
-## Description
-TaskFlow is a robust REST API for task management, built with backend development best practices.
-
-## Technical Stack
-- **Backend**: Java 17+, Spring Boot 3.x
-- **Database**: PostgreSQL
-- **Testing**: JUnit 5, Mockito
-- **Containerization**: Docker, Docker Compose
-- **Documentation**: Swagger/OpenAPI
-
-## Key Features
-
-### 1. Clean Architecture
-- Clear separation between layers (Controller, Service, Repository)
-- DTOs for data transfer
-- Mappers for entity to DTO conversion
-
-### 2. Authentication and Authorization
-- JWT (JSON Web Tokens) for stateless authentication
-- RBAC (Role-Based Access Control)
-- Resource ownership validation
-
-### 3. Data Persistence
-- JPA/Hibernate for ORM
-- Migrations with Flyway
-- Optimized indexes for frequent queries
-
-### 4. Testing
-- Unit tests for business logic
-- Integration tests for APIs
-- Coverage >85% on critical code
-
-### 5. Security
-- Input validation with Bean Validation
-- HTTPS/TLS in production
-- Principle of least privilege
-- SQL injection protection
-
-## Installation and Execution
-
-\`\`\`bash
-# Clone repository
-git clone https://github.com/LeoHolmer/taskflow-api.git
-cd taskflow-api
-
-# Build with Maven
-mvn clean package
-
-# Run with Docker Compose
-docker-compose up
-
-# API will be available at http://localhost:8080
-\`\`\`
-
-## Main Endpoints
-
-### Tasks
-- \`GET /api/tasks\` - List tasks
-- \`POST /api/tasks\` - Create task
-- \`GET /api/tasks/{id}\` - Get task details
-- \`PUT /api/tasks/{id}\` - Update task
-- \`DELETE /api/tasks/{id}\` - Delete task
-
-### Users
-- \`POST /api/auth/register\` - Register user
-- \`POST /api/auth/login\` - Login
-- \`GET /api/users/me\` - Get profile
-
-## Lessons Learned
-- Importance of architecture from the start
-- Exhaustive testing prevents production bugs
-- Docker simplifies deployment and reproducibility
-- Clear documentation is essential for APIs
-`,
-  },
-  greatevents: {
-    id: "greatevents",
-    title: "GreatEvents API",
-    description: "Event management platform with complete lifecycle and complex business rules",
-    longDescription:
-      "GreatEvents is a complete event management platform with state machines, Domain Events, granular access control, and complex business validations.",
-    technologies: ["Java", "Spring Boot", "Spring Security", "JPA", "PostgreSQL", "RabbitMQ"],
-    github: "https://github.com/LeoHolmer/greatevents",
-    highlights: [
-      "Domain models with state management and state machines",
-      "Strict business rules with multi-layer validations",
-      "Role-based access control with granular authorization",
-      "Automatic notifications through Domain Events",
-    ],
-    icon: <Zap className="w-6 h-6" />,
-    features: [
-      "Complete event lifecycle (Creation → Publishing → Closing)",
-      "State machine for valid transitions",
-      "Ticket/entry system with capacity control",
-      "Real-time notifications with Domain Events",
-      "Event reports and statistics",
-      "Attendee management and confirmations",
-      "Payment system integration",
-    ],
-    challenges: [
-      "Modeling complex states without allowing invalid transitions",
-      "Maintaining consistency in distributed events",
-      "Handling asynchronous notifications reliably",
-      "Validating complex business rules",
-    ],
-    solutions: [
-      "State Pattern implementation with state machines",
-      "Domain Events for communication between aggregates",
-      "Event sourcing for auditing and reproducibility",
-      "Multi-layer validations with specific exceptions",
-    ],
-    readme: `# GreatEvents API
-
-## Description
-GreatEvents is an enterprise event management platform with support for complex lifecycles.
-
-## Key Features
-
-### 1. State Machine
-Events transition through well-defined states:
-- DRAFT (Draft)
-- PUBLISHED (Published)
-- ONGOING (In Progress)
-- CLOSED (Closed)
-- CANCELLED (Cancelled)
-
-### 2. Domain Events
-Each important change generates a domain event:
-- EventCreated
-- EventPublished
-- TicketPurchased
-- EventClosed
-
-### 3. Access Control
-- Organizer: Full event control
-- Attendee: Can purchase tickets and view details
-- Admin: Global supervision
-
-### 4. Business Validations
-- Cannot sell more tickets than capacity
-- Only published events can receive purchases
-- Closed events cannot be modified
-
-## Technical Stack
-- Java 17+
-- Spring Boot 3.x
-- Spring Security
-- JPA/Hibernate
-- PostgreSQL
-- RabbitMQ for asynchronous events
-
-## Installation
-
-\`\`\`bash
-git clone https://github.com/LeoHolmer/greatevents.git
-cd greatevents
-mvn clean package
-docker-compose up
-\`\`\`
-
-## Main Endpoints
-
-### Events
-- \`POST /api/events\` - Create event
-- \`GET /api/events\` - List events
-- \`GET /api/events/{id}\` - Get event details
-- \`PUT /api/events/{id}\` - Update event
-- \`POST /api/events/{id}/publish\` - Publish event
-
-### Tickets
-- \`POST /api/events/{id}/tickets\` - Purchase ticket
-- \`GET /api/events/{id}/tickets\` - List tickets
-- \`DELETE /api/tickets/{id}\` - Cancel ticket
-
-## Patterns Used
-- Domain-Driven Design (DDD)
-- Event Sourcing
-- CQRS (Command Query Responsibility Segregation)
-- State Pattern
-`,
-  },
-  allmusic: {
-    id: "allmusic",
-    title: "AllMusic API",
-    description: "Music platform backend with user, song, and playlist management",
-    longDescription:
-      "AllMusic is a complete REST API for a music streaming platform, with user management, songs, playlists, and recommendations.",
-    technologies: ["Java", "Spring Boot", "PostgreSQL", "JWT", "Swagger", "Maven"],
-    github: "https://github.com/LeoHolmer/AllMusic",
-    highlights: [
-      "JWT authentication with resource ownership validation",
-      "Song and playlist management with granular user permissions",
-      "Exhaustive input validation and real-world consumption design",
-      "Interactive documentation with Swagger/OpenAPI",
-    ],
-    icon: <Layers className="w-6 h-6" />,
-    features: [
-      "Authentication and authorization with JWT",
-      "User CRUD with customized profiles",
-      "Song management with metadata (artist, album, duration)",
-      "Personal playlist creation and management",
-      "Advanced song and playlist search",
-      "Favorites system",
-      "Taste-based recommendations",
-      "Interactive Swagger documentation",
-    ],
-    challenges: [
-      "Designing a flexible data model for music",
-      "Managing access permissions for private playlists",
-      "Optimizing searches on large data volumes",
-      "Validating input data integrity",
-    ],
-    solutions: [
-      "Database normalization with strategic indexes",
-      "Multi-layer validation (API, Service, Database)",
-      "Optimized queries with JPA Named Queries",
-      "Clear documentation with Swagger",
-    ],
-    readme: `# AllMusic API
-
-## Description
-AllMusic is a REST API for a music streaming platform with complete user and content management.
-
-## Features
-
-### 1. User Management
-- Registration and login
-- Customized profiles
-- Profile preferences
-
-### 2. Music Catalog
-- Artists and albums
-- Genres and tags
-- Song metadata (duration, release date)
-
-### 3. Playlists
-- Public and private playlists
-- Playlist sharing
-- Collaborative playlists
-
-### 4. Search and Discovery
-- Search by song, artist, album
-- Genre filtering
-- Advanced filters
-
-## Technical Stack
-- Java 17+
-- Spring Boot 3.x
-- PostgreSQL
-- JWT for authentication
-- Swagger/OpenAPI
-
-## Installation
-
-\`\`\`bash
-git clone https://github.com/LeoHolmer/AllMusic.git
-cd AllMusic
-mvn clean package
-docker-compose up
-\`\`\`
-
-## Authentication
-- \`POST /api/auth/register\` - Register
-- \`POST /api/auth/login\` - Login
-- \`POST /api/auth/logout\` - Logout
-
-### Songs
-- \`GET /api/songs\` - List songs
-- \`GET /api/songs/{id}\` - Song details
-- \`POST /api/songs\` - Create song (admin only)
-
-### Playlists
-- \`POST /api/playlists\` - Create playlist
-- \`GET /api/playlists\` - List playlists
-- \`POST /api/playlists/{id}/songs\` - Add song
-
-## Documentation
-Interactive documentation is available at \`/swagger-ui.html\`
-`,
-  },
-};
+import { useLanguage } from "@/contexts/LanguageContext";
+import { PROJECTS_DATA, t } from "@/lib/i18n";
 
 export default function ProjectDetail() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [, navigate] = useLocation();
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const projectIndex = PROJECTS_DATA.findIndex((p) => p.id === id);
+  const project = projectIndex !== -1 ? PROJECTS_DATA[projectIndex] : null;
 
-  if (!mounted) return null;
-
-  const project = projectsData[id || ""];
+  const prevProject = projectIndex > 0 ? PROJECTS_DATA[projectIndex - 1] : null;
+  const nextProject =
+    projectIndex !== -1 && projectIndex < PROJECTS_DATA.length - 1
+      ? PROJECTS_DATA[projectIndex + 1]
+      : null;
 
   if (!project) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${
-        theme === "dark" ? "bg-gray-900" : "bg-white"
-      }`}>
-        <div className="text-center">
-          <h1 className="text-4xl font-black mb-4">Project Not Found</h1>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex items-center justify-center p-6">
+        <Card className="max-w-md p-8 text-center border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
+          <Terminal className="w-12 h-12 mx-auto text-blue-600 mb-4 animate-bounce" />
+          <h2 className="text-2xl font-bold mb-2">
+            {language === "es" ? "Proyecto no encontrado" : "Project not found"}
+          </h2>
+          <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">
+            {language === "es"
+              ? "El identificador del proyecto no coincide con ninguno de los registros disponibles."
+              : "The requested project identifier does not match any registered portfolio projects."}
+          </p>
           <Button
             onClick={() => navigate("/")}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium"
           >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Portfolio
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {language === "es" ? "Volver al Portafolio" : "Back to Portfolio"}
           </Button>
-        </div>
+        </Card>
       </div>
     );
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      theme === "dark"
-        ? "bg-gray-900 text-white"
-        : "bg-white text-gray-900"
-    }`}>
-      {/* Header */}
-      <header className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        theme === "dark"
-          ? "border-gray-700/50 bg-gray-900/95 backdrop-blur-sm"
-          : "border-gray-200/50 bg-white/95 backdrop-blur-sm"
-      }`}>
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+      {/* Background Gradients */}
+      <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div className="absolute -top-40 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl dark:bg-blue-600/10" />
+        <div className="absolute top-1/2 -left-40 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl dark:bg-cyan-600/10" />
+      </div>
+
+      {/* Top Navbar */}
+      <header className="sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Button
-            onClick={() => navigate("/")}
             variant="ghost"
-            className="gap-2"
+            onClick={() => navigate("/")}
+            className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 -ml-2 text-sm font-semibold flex items-center gap-2"
           >
-            <ArrowLeft className="w-5 h-5" />
-            Back
+            <ArrowLeft className="w-4 h-4" />
+            <span>{t(language, "projects.modal.back")}</span>
           </Button>
 
-          <Button
-            onClick={() => window.open(project.github, "_blank")}
-            variant="outline"
-            className="gap-2"
-          >
-            <Github className="w-5 h-5" />
-            GitHub
-          </Button>
+          <div className="flex items-center gap-3">
+            {/* Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors"
+              title="Switch language / Cambiar idioma"
+            >
+              <Globe className="w-3.5 h-3.5 text-blue-600" />
+              <span>{language === "es" ? "EN" : "ES"}</span>
+            </button>
+
+            {/* Theme Toggle */}
+            <button
+              onClick={() => toggleTheme?.()}
+              className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 transition-colors"
+              title={theme === "dark" ? "Modo Claro" : "Modo Oscuro"}
+            >
+              {theme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-700" />}
+            </button>
+          </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-16 max-w-4xl">
-        {/* Hero Section */}
-        <div className="mb-16">
-          <div className="flex items-start gap-4 mb-6">
-            <div className={`p-4 rounded-lg ${
-              theme === "dark"
-                ? "bg-blue-600/20"
-                : "bg-blue-50"
-            }`}>
-              {project.icon}
-            </div>
-            <div>
-              <h1 className="text-5xl font-black mb-2">{project.title}</h1>
-              <p className={`text-xl ${
-                theme === "dark"
-                  ? "text-gray-400"
-                  : "text-gray-600"
-              }`}>
-                {project.longDescription}
-              </p>
-            </div>
+      {/* Project Header Content */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="mb-8">
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <Badge
+              variant="outline"
+              className="border-blue-500/40 text-blue-600 dark:text-blue-400 bg-blue-500/10 font-mono text-xs px-3 py-1"
+            >
+              {project.badge[language]}
+            </Badge>
+            <span className="text-xs text-slate-500 font-mono uppercase tracking-wider">
+              {project.category}
+            </span>
           </div>
 
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {project.technologies.map((tech) => (
-              <Badge key={tech} variant="secondary" className="px-3 py-1">
-                {tech}
-              </Badge>
-            ))}
-          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
+            {project.title}
+          </h1>
 
-          {/* Highlights */}
-          <div className={`p-6 rounded-lg border ${
-            theme === "dark"
-              ? "border-gray-700/50 bg-gray-800/30"
-              : "border-gray-200/50 bg-gray-50/30"
-          }`}>
-            <h2 className="text-2xl font-black mb-4">Highlights</h2>
-            <ul className="space-y-3">
-              {project.highlights.map((highlight, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <span className="text-blue-600 font-bold mt-1">★</span>
-                  <span className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
-                    {highlight}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-4xl leading-relaxed mb-6 font-medium">
+            {project.subtitle[language]}
+          </p>
+
+          {/* Action Links */}
+          <div className="flex flex-wrap items-center gap-3">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-md shadow-blue-500/20 hover:scale-105"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>{t(language, "projects.btn.liveDemo")}</span>
+              </a>
+            )}
+
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-500 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-semibold text-sm transition-all hover:scale-105 shadow-sm"
+              >
+                <Github className="w-4 h-4" />
+                <span>{t(language, "projects.btn.github")}</span>
+              </a>
+            )}
           </div>
         </div>
 
-        {/* Features Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-black mb-8">Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {project.features.map((feature, idx) => (
-              <Card
-                key={idx}
-                className={`p-4 transition-all duration-300 ${
-                  theme === "dark"
-                    ? "border border-gray-700/50 bg-gray-800/30 hover:bg-gray-800/50"
-                    : "border border-gray-200/50 bg-gray-50/30 hover:bg-gray-100/30"
-                }`}
+        {/* Tech Stack Pills */}
+        <div className="mb-12 p-6 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+          <h2 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+            <Cpu className="w-4 h-4 text-blue-600" />
+            <span>{language === "es" ? "Stack Tecnológico Implementado" : "Implemented Technology Stack"}</span>
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="px-3 py-1 rounded-md text-xs font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200/60 dark:border-slate-700/60"
               >
-                <div className="flex items-start gap-3">
-                  <Code className="w-5 h-5 text-blue-600 flex-shrink-0 mt-1" />
-                  <p className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
-                    {feature}
-                  </p>
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          {/* Left Column: Deep Overview & Architecture (2 cols) */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Overview Card */}
+            <Card className="p-6 sm:p-8 bg-white dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2.5">
+                <Terminal className="w-5 h-5 text-blue-600" />
+                <span>{language === "es" ? "Descripción & Alcance Técnico" : "Technical Scope & Overview"}</span>
+              </h2>
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-4 text-base">
+                {project.description[language]}
+              </p>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                {project.longDescription[language]}
+              </p>
+            </Card>
+
+            {/* Architecture Breakdown Card */}
+            <Card className="p-6 sm:p-8 bg-white dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2.5">
+                <Layers className="w-5 h-5 text-blue-600" />
+                <span>{t(language, "projects.modal.architecture")}</span>
+              </h2>
+              <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-6 font-mono">
+                {project.architecture.pattern[language]}
+              </p>
+
+              <div className="space-y-3 mb-6">
+                {project.architecture.layers[language].map((layer, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-950/60 border border-slate-200/70 dark:border-slate-800 text-sm flex items-start gap-3"
+                  >
+                    <span className="w-6 h-6 rounded-full bg-blue-600/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5">
+                      {idx + 1}
+                    </span>
+                    <span className="text-slate-700 dark:text-slate-300 leading-relaxed">{layer}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/50 dark:border-blue-900/40 text-xs font-mono text-blue-800 dark:text-blue-300">
+                <Database className="w-4 h-4 shrink-0 text-blue-600" />
+                <span>
+                  <strong>{language === "es" ? "Motor de Persistencia:" : "Persistence Engine:"}</strong>{" "}
+                  {project.architecture.database[language]}
+                </span>
+              </div>
+            </Card>
+
+            {/* Security Highlights (Zero-Trust) */}
+            <Card className="p-6 sm:p-8 bg-gradient-to-br from-white via-white to-red-50/20 dark:from-slate-900 dark:via-slate-900 dark:to-red-950/10 border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2.5">
+                <Shield className="w-5 h-5 text-red-500" />
+                <span>{t(language, "projects.modal.security")}</span>
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
+                {language === "es"
+                  ? "Diseño defensivo estricto sin exposición de debilidades ni credenciales sensibles."
+                  : "Defensive engineering implemented without exposing internal credentials or vulnerability vectors."}
+              </p>
+
+              <ul className="space-y-3">
+                {project.securityHighlights[language].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
+
+          {/* Right Column: Challenges, Solutions & Endpoints (1 col) */}
+          <div className="space-y-8">
+            {/* Highlights Card */}
+            <Card className="p-6 bg-white dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                <Lock className="w-4 h-4 text-blue-600" />
+                <span>{language === "es" ? "Puntos Críticos" : "Key Highlights"}</span>
+              </h3>
+              <ul className="space-y-3">
+                {project.highlights[language].map((hl, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 mt-1.5" />
+                    <span>{hl}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Challenges & Solutions */}
+            <Card className="p-6 bg-white dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-500" />
+                <span>{t(language, "projects.modal.challenges")}</span>
+              </h3>
+              <ul className="space-y-2 mb-6">
+                {project.challenges[language].map((ch, idx) => (
+                  <li key={idx} className="text-xs text-slate-600 dark:text-slate-400 bg-amber-50/50 dark:bg-amber-950/20 p-2.5 rounded border border-amber-200/40 dark:border-amber-900/30">
+                    {ch}
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                <Lightbulb className="w-4 h-4 text-emerald-500" />
+                <span>{t(language, "projects.modal.solutions")}</span>
+              </h3>
+              <ul className="space-y-2">
+                {project.solutions[language].map((sol, idx) => (
+                  <li key={idx} className="text-xs text-slate-700 dark:text-slate-300 bg-emerald-50/50 dark:bg-emerald-950/20 p-2.5 rounded border border-emerald-200/40 dark:border-emerald-900/30">
+                    {sol}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+
+            {/* Primary Endpoints Preview */}
+            {project.mainEndpoints && project.mainEndpoints.length > 0 && (
+              <Card className="p-6 bg-white dark:bg-slate-900/90 border-slate-200/80 dark:border-slate-800 shadow-sm">
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-blue-600" />
+                  <span>{t(language, "projects.modal.endpoints")}</span>
+                </h3>
+                <div className="space-y-2.5">
+                  {project.mainEndpoints.map((ep, idx) => (
+                    <div
+                      key={idx}
+                      className="p-2.5 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200/70 dark:border-slate-800 font-mono text-xs"
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <span
+                          className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
+                            ep.method === "GET"
+                              ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                              : ep.method === "POST"
+                              ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                              : ep.method === "PUT"
+                              ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                              : "bg-red-500/10 text-red-600 dark:text-red-400"
+                          }`}
+                        >
+                          {ep.method}
+                        </span>
+                        <span className="text-slate-800 dark:text-slate-200 font-semibold">{ep.path}</span>
+                      </div>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 font-sans">
+                        {ep.desc[language]}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </Card>
-            ))}
+            )}
           </div>
         </div>
 
-        {/* Challenges & Solutions */}
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <div>
-            <h2 className="text-3xl font-black mb-8">Challenges</h2>
-            <ul className="space-y-3">
-              {project.challenges.map((challenge, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <span className="text-red-600 font-bold mt-1">⚠</span>
-                  <span className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
-                    {challenge}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Project Navigation Footer (Prev / Next) */}
+        <div className="border-t border-slate-200 dark:border-slate-800 pt-8 mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+          {prevProject ? (
+            <Link
+              href={`/project/${prevProject.id}`}
+              className="w-full sm:w-auto p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-white dark:bg-slate-900 transition-all text-left flex items-center gap-3 group"
+            >
+              <ArrowLeft className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:-translate-x-1 transition-all" />
+              <div>
+                <span className="text-[11px] text-slate-500 font-mono uppercase block">
+                  {language === "es" ? "Proyecto Anterior" : "Previous Project"}
+                </span>
+                <span className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {prevProject.title.split("·")[0]}
+                </span>
+              </div>
+            </Link>
+          ) : (
+            <div />
+          )}
 
-          <div>
-            <h2 className="text-3xl font-black mb-8">Solutions</h2>
-            <ul className="space-y-3">
-              {project.solutions.map((solution, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold mt-1">✓</span>
-                  <span className={theme === "dark" ? "text-gray-300" : "text-gray-700"}>
-                    {solution}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* README */}
-        <Card
-          className={`p-8 transition-all duration-300 ${
-            theme === "dark"
-              ? "border border-gray-700/50 bg-gray-800/30"
-              : "border border-gray-200/50 bg-gray-50/30"
-          }`}
-        >
-          <h2 className="text-3xl font-black mb-8">README</h2>
-          <div className={`prose prose-sm max-w-none ${
-            theme === "dark"
-              ? "prose-invert"
-              : ""
-          }`}>
-            <pre className={`p-6 rounded-lg overflow-x-auto text-sm font-mono ${
-              theme === "dark"
-                ? "bg-gray-900 text-gray-300"
-                : "bg-white text-gray-700"
-            }`}>
-              {project.readme}
-            </pre>
-          </div>
-        </Card>
-
-        {/* Back Button */}
-        <div className="mt-16 text-center">
-          <Button
-            onClick={() => navigate("/")}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-lg"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Portfolio
-          </Button>
+          {nextProject ? (
+            <Link
+              href={`/project/${nextProject.id}`}
+              className="w-full sm:w-auto p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 bg-white dark:bg-slate-900 transition-all text-right flex items-center justify-end gap-3 group"
+            >
+              <div>
+                <span className="text-[11px] text-slate-500 font-mono uppercase block">
+                  {language === "es" ? "Siguiente Proyecto" : "Next Project"}
+                </span>
+                <span className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {nextProject.title.split("·")[0]}
+                </span>
+              </div>
+              <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+            </Link>
+          ) : (
+            <div />
+          )}
         </div>
       </main>
     </div>
