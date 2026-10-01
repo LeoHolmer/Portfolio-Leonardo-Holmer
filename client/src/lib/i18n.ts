@@ -54,42 +54,46 @@ export const PROJECTS_DATA: ProjectData[] = [
     badge: { es: "En Producción Real", en: "Live Production" },
     badgeVariant: "default",
     subtitle: {
-      es: "Plataforma integral de gestión técnica, operaciones en campo y catálogo comercial para taller pesado",
-      en: "Comprehensive technical management, field operations & digital catalog ERP for heavy machinery workshop",
+      es: "Plataforma integral de gestión técnica, operaciones en campo, padrón comercial y catálogo para taller pesado",
+      en: "Comprehensive technical management, field operations, commercial client registry & catalog ERP for heavy machinery workshop",
     },
     description: {
-      es: "Solución digital integral en producción activa (becerroservicios.com) para un taller especializado en maquinaria agrícola pesada. Incluye web institucional SEO-optimizada, PWA offline para tablets y celulares, padrón de clientes comercial, facturación con autocompletado fiscal, cotizaciones bimonetarias (ARS/USD), partes de trabajo diarios con firma digital del técnico y control de inventario de repuestos críticos.",
-      en: "Full-scale production ERP & PWA (becerroservicios.com) for a heavy agricultural machinery service center. Features SEO public landing, offline-capable PWA for mobile and tablets, commercial customer database, bi-currency quotations (ARS/USD), digital signature work orders, and critical spare parts inventory tracking.",
+      es: "Solución digital integral en producción activa (becerroservicios.com) para un taller especializado en maquinaria agrícola pesada en Rojas, Buenos Aires. Incluye web institucional SEO-optimizada (Schema.org AutoRepair), PWA offline instalable para tablets y celulares con topbar adaptativa, padrón de clientes comercial con métricas y exportación CSV, facturación con autocompletado fiscal, cotizaciones bimonetarias (ARS/USD), partes de trabajo diarios con firma digital criptográfica del técnico y control de inventario de repuestos y filtros críticos con alertas de reposición.",
+      en: "Full-scale production ERP & PWA (becerroservicios.com) for a heavy agricultural machinery service center in Buenos Aires. Features SEO public landing (Schema.org AutoRepair), offline-capable PWA for mobile and tablets with adaptive single-row topbar, commercial client database with metrics & CSV export, bi-currency quotations (ARS/USD) with fiscal autofill, digital signature work orders, and critical spare parts inventory tracking.",
     },
     longDescription: {
-      es: "Desarrollado y desplegado para Becerro Servicios en Rojas, Buenos Aires. El sistema resuelve la desconexión entre el trabajo en campo y la administración de oficina mediante una PWA multiplataforma instalable que funciona sin depender de tiendas de aplicaciones. Cuenta con una arquitectura de persistencia híbrida, cálculos bimonetarios en tiempo real y generación automática de comprobantes membretados en formato PDF con firma estampada.",
-      en: "Engineered and deployed for Becerro Servicios in Buenos Aires, Argentina. Bridges the gap between technical field repairs and office administration through an installable PWA. Implements a hybrid persistence model, real-time bi-currency arithmetic, and automated PDF receipt generation with verifiable technician digital signatures.",
+      es: "Desarrollado y desplegado para Becerro Servicios en Rojas, Buenos Aires. El sistema resuelve la desconexión entre el trabajo en campo y la administración de oficina mediante una PWA multiplataforma instalable que funciona sin depender de tiendas de aplicaciones. Cuenta con una arquitectura de persistencia híbrida (almacenamiento local atómico sincronizado con Supabase Cloud PostgreSQL), cálculos bimonetarios en tiempo real, buscadores globales reactivos en cada módulo y generación automática de comprobantes membretados en formato PDF con firma estampada.",
+      en: "Engineered and deployed for Becerro Servicios in Buenos Aires, Argentina. Bridges the gap between technical field repairs and office administration through an installable PWA. Implements a hybrid persistence model (atomic local storage synchronized with Supabase Cloud PostgreSQL), real-time bi-currency arithmetic, reactive global searches across all operational modules, and automated PDF receipt generation with verifiable technician digital signatures.",
     },
     technologies: [
       "TypeScript",
       "React",
       "Node.js / Express",
       "Supabase Cloud",
+      "PostgreSQL",
       "Tailwind CSS",
       "PWA / Service Worker",
       "Scrypt / HMAC",
+      "jsPDF",
       "Lucide Icons",
     ],
     liveUrl: "https://becerroservicios.com",
     highlights: {
       es: [
-        "PWA multiplataforma instalable en iOS y Android con soporte offline vía Service Worker",
-        "Cotizaciones bimonetarias inteligentes (ARS/USD) con cálculo de IVA y márgenes",
-        "Partes de trabajo diarios con firma digital automática del técnico responsable y exportación PDF",
-        "Buscadores globales en tiempo real en todas las entidades operativas con filtrado reactivo",
-        "Hardening de seguridad integral: hasheo scrypt, tokens HMAC-SHA256 y rate limiters anti-fuerza bruta",
+        "PWA multiplataforma instalable en iOS y Android con soporte offline vía Service Worker y topbar adaptativa",
+        "Padrón comercial de clientes con métricas de cartera, integración con WhatsApp (wa.me) y exportación CSV",
+        "Cotizaciones y facturación bimonetaria inteligente (ARS/USD) con autocompletado fiscal y cálculo de IVA",
+        "Partes de trabajo diarios con firma digital criptográfica automática del técnico y exportación a PDF membretado",
+        "Buscadores globales en tiempo real en todas las entidades operativas (maquinarias, clientes, facturas, filtros)",
+        "Hardening de seguridad integral: hasheo scrypt, tokens HMAC-SHA256, RBAC estricto y rate limiting anti-fuerza bruta",
       ],
       en: [
-        "Cross-platform installable PWA for iOS & Android with offline support via custom Service Worker",
-        "Smart bi-currency quotations (ARS/USD) with automatic tax and margin calculations",
-        "Daily technical work orders featuring automated digital signature stamping and PDF generation",
-        "Real-time reactive global search across all operational modules",
-        "Comprehensive security hardening: scrypt hashing, HMAC-SHA256 tokens, and brute-force rate limiters",
+        "Cross-platform installable PWA for iOS & Android with offline support via custom Service Worker & adaptive topbar",
+        "Commercial customer database with portfolio metrics, direct WhatsApp links, and CSV export",
+        "Smart bi-currency quotations and billing (ARS/USD) with fiscal autofill and tax margin calculations",
+        "Daily technical work orders featuring cryptographic digital signature stamping and branded PDF export",
+        "Real-time reactive global search across all operational modules (machinery, clients, invoices, filters)",
+        "Comprehensive security hardening: scrypt hashing, HMAC-SHA256 tokens, strict RBAC, and brute-force rate limiters",
       ],
     },
     architecture: {
@@ -100,50 +104,50 @@ export const PROJECTS_DATA: ProjectData[] = [
       layers: {
         es: [
           "Frontend SPA + PWA: React, TypeScript, Tailwind CSS, Radix UI",
-          "Service Worker: Gestión de cache dinámico y experiencia offline",
-          "API Gateway & Servidor: Express con middlewares de seguridad y sanitización",
-          "Persistencia Híbrida: Almacenamiento local atómico sincronizado con Supabase Cloud",
+          "Service Worker: Gestión de caché dinámico, manifiesto y experiencia offline",
+          "API Gateway & Servidor: Express con middlewares de seguridad, rate limiting y sanitización",
+          "Persistencia Híbrida: Motor transaccional local atómico sincronizado con Supabase Cloud (PostgreSQL)",
         ],
         en: [
           "Frontend SPA + PWA: React, TypeScript, Tailwind CSS, Radix UI",
-          "Service Worker: Dynamic cache management and offline resilience",
-          "API Gateway & Server: Express with strict security & sanitization middlewares",
-          "Hybrid Persistence: Local atomic storage synced with Supabase Cloud",
+          "Service Worker: Dynamic cache management, manifest, and offline resilience",
+          "API Gateway & Server: Express with strict security, rate limiting & sanitization middlewares",
+          "Hybrid Persistence: Atomic local storage synchronized with Supabase Cloud (PostgreSQL)",
         ],
       },
       database: {
         es: "Persistencia Híbrida Atómica Local + Supabase (PostgreSQL Cloud)",
-        en: "Hybrid Persistence Atomic Local Storage + Supabase (PostgreSQL Cloud)",
+        en: "Hybrid Atomic Local Persistence + Supabase (PostgreSQL Cloud)",
       },
     },
     securityHighlights: {
       es: [
         "Control de Acceso Basado en Roles (RBAC) con separación estricta entre Administrador y Técnico Profesional",
-        "Contraseñas protegidas mediante scrypt con sales criptográficas únicas",
+        "Contraseñas protegidas mediante algoritmo scrypt con sales criptográficas únicas",
         "Tokens de sesión firmados con HMAC-SHA256 (clave de 256 bits) y validación en tiempo constante contra timing attacks",
         "Limitadores de tasa (rate limiting) en memoria contra ataques de fuerza bruta y saturación de API",
         "Cabeceras de seguridad estrictas: HSTS forzado, CSP, X-Frame-Options anti-clickjacking y política CORS controlada",
-        "Purga integral de tokens y claves de sesión en servidor y navegador al cerrar sesión",
+        "Purga integral de tokens, claves y datos sensibles en servidor y cliente al cerrar sesión",
       ],
       en: [
-        "Role-Based Access Control (RBAC) strictly isolating Administrator from Technician permissions",
+        "Role-Based Access Control (RBAC) strictly isolating Administrator from Field Technician permissions",
         "Passwords hashed with scrypt using cryptographically secure unique salts",
         "Session tokens signed via HMAC-SHA256 (256-bit key) with constant-time equality validation against timing attacks",
         "In-memory rate limiting defense against brute-force logins and endpoint flooding",
         "Strict HTTP security headers: mandatory HSTS, CSP, anti-clickjacking X-Frame-Options, and tight CORS policies",
-        "Full token and session key purge across client and server upon logout",
+        "Full token, key, and sensitive state purge across client and server upon logout",
       ],
     },
     challenges: {
       es: [
-        "Garantizar disponibilidad operativa en áreas rurales con conectividad intermitente",
-        "Manejar cotizaciones y facturas bimonetarias con fluctuaciones cambiarias sin errores de redondeo",
-        "Proteger datos sensibles de clientes y costos de taller en dispositivos compartidos",
+        "Garantizar disponibilidad operativa ininterrumpida en zonas rurales con conectividad celular intermitente",
+        "Gestionar cotizaciones y facturas bimonetarias con fluctuaciones cambiarias sin imprecisiones decimales",
+        "Proteger datos confidenciales de costos mayoristas de taller en dispositivos compartidos de campo",
       ],
       en: [
-        "Ensuring seamless operation in rural environments with intermittent cellular reception",
+        "Ensuring seamless technical operation in rural agricultural areas with intermittent cellular signal",
         "Handling bi-currency quotes and invoices with currency fluctuations without precision loss",
-        "Protecting sensitive customer data and wholesale costs on shared shop floor devices",
+        "Protecting confidential wholesale repair costs on shared mobile workshop devices",
       ],
     },
     solutions: {
@@ -164,6 +168,128 @@ export const PROJECTS_DATA: ProjectData[] = [
       { method: "GET", path: "/api/clientes", desc: { es: "Padrón comercial de clientes con métricas", en: "Customer directory with metric counters" } },
       { method: "GET", path: "/api/filtros", desc: { es: "Inventario de repuestos con alertas de stock crítico", en: "Spare parts catalog with low-stock alerts" } },
       { method: "POST", path: "/api/trabajos", desc: { es: "Registro de parte técnico con estampa de firma", en: "Work order registration with digital signature" } },
+    ],
+  },
+  {
+    id: "yerba-buena",
+    title: "Yerba Buena · E-Commerce & ERP Criollo",
+    category: "production",
+    badge: { es: "En Producción Real", en: "Live Production" },
+    badgeVariant: "default",
+    subtitle: {
+      es: "Plataforma integral de comercio electrónico y panel de gestión empresarial (ERP) especializada en la cultura matera criolla",
+      en: "Comprehensive E-Commerce platform & business ERP suite specialized in artisan criollo mate culture",
+    },
+    description: {
+      es: "Solución digital integral en producción activa (yerbabuenaok.com) que combina un storefront público de alta velocidad con un panel ERP administrativo discreto. Incluye tienda online responsiva con selector de retiro en puntos físicos (Palermo Soho / Belgrano) y envíos con Correo Argentino, PWA instalable con soporte offline, terminal Punto de Venta (POS) en mostrador para despacho inmediato, cotizador interactivo con cálculo en tiempo real de rentabilidad neta y ROI, control de inventario multidepósito, libro diario de finanzas multianual y exportación automática de catálogos y presupuestos en PDF con membrete y planillas Excel.",
+      en: "Full-scale production digital solution (yerbabuenaok.com) merging a high-speed public storefront with a discrete administrative ERP suite. Features a responsive online store with physical pickup points (Palermo Soho / Belgrano) and postal shipping via Correo Argentino, installable PWA with offline caching, counter Point of Sale (POS) terminal, interactive quote simulator calculating real-time net margins & ROI, multi-location inventory, multi-year financial cash flow, and automated branded PDF & Excel reporting.",
+    },
+    longDescription: {
+      es: "Desarrollado y desplegado para Yerba Buena en yerbabuenaok.com con Next.js 15 (App Router), React 19 y TypeScript. El sistema unifica la experiencia comercial de cara al cliente (buscador reactivo, carrito deslizable con validación de stock en vivo, guía interactiva del matero y canal multicanal WhatsApp) con un potente ERP interno (/admin). El módulo de cotizaciones deduce automáticamente gastos logísticos y packaging para proyectar márgenes comerciales antes de congelar presupuestos o transformarlos en ventas POS en 1 solo clic. La persistencia opera bajo un motor atómico local transaccional sincronizado con Supabase Cloud (PostgreSQL).",
+      en: "Engineered and deployed for Yerba Buena at yerbabuenaok.com utilizing Next.js 15 (App Router), React 19, and TypeScript. Unifies the client-facing shopping journey (reactive search, drawer cart with live stock guards, interactive mate ritual guide, and WhatsApp channel) with a robust back-office ERP suite (/admin). The quotation engine automatically accounts for logistics and custom packaging overhead to compute precise profit margins before locking quotes or converting them to POS sales in 1 click. Powered by an atomic local transactional storage engine synced with Supabase Cloud (PostgreSQL).",
+    },
+    technologies: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase Cloud",
+      "PostgreSQL",
+      "PWA / Service Worker",
+      "Recharts",
+      "jsPDF",
+      "SheetJS (XLSX)",
+      "Lucide Icons",
+    ],
+    liveUrl: "https://yerbabuenaok.com",
+    highlights: {
+      es: [
+        "Storefront de alta velocidad con Next.js 15 App Router, React 19, Modo Oscuro Criollo y PWA instalable",
+        "Terminal Punto de Venta (POS) de mostrador con descuento automático de stock y registro en flujo de fondos",
+        "Cotizador & Simulador de Rentabilidad con cómputo en vivo de CMV, Margen Neto %, Ganancia ($) y ROI %",
+        "Generación de presupuestos comerciales e informes financieros en PDF membretado oficial y Excel (.xlsx)",
+        "Checkout con puntos de retiro físicos gratuitos (Palermo Soho y Belgrano) e integración con Correo Argentino",
+        "Flujo de caja multianual con generación automática de asientos de egreso al asentar compras a proveedores",
+      ],
+      en: [
+        "High-performance storefront powered by Next.js 15 App Router, React 19, Criollo Dark Mode & installable PWA",
+        "Point of Sale (POS) counter terminal with real-time stock deduction and immediate cash flow logging",
+        "Smart Quotation & Profitability Simulator calculating CMV, Net Margin %, Net Profit ($), and ROI %",
+        "Automated client-facing quotes and internal financial reports exported to branded PDF and Excel (.xlsx)",
+        "Seamless checkout supporting free physical pickup points (Palermo & Belgrano) and postal shipping rates",
+        "Multi-year cash flow management with automatic expense ledger entries upon stock intake from suppliers",
+      ],
+    },
+    architecture: {
+      pattern: {
+        es: "Arquitectura Fullstack con Next.js 15 App Router, Server Components & Route Handlers",
+        en: "Fullstack Architecture with Next.js 15 App Router, Server Components & Route Handlers",
+      },
+      layers: {
+        es: [
+          "Presentación & UI: Next.js 15 Server & Client Components, React 19, Tailwind CSS, Recharts",
+          "PWA & Service Worker: Web App Manifest dinámico y almacenamiento en caché para resiliencia offline",
+          "API & Route Handlers: Endpoints REST seguros (/api/products, /api/pos/sale, /api/orders, /api/finanzas)",
+          "Persistencia Híbrida: Motor transaccional local atómico sincronizado con Supabase Cloud (PostgreSQL)",
+        ],
+        en: [
+          "Presentation & UI: Next.js 15 Server & Client Components, React 19, Tailwind CSS, Recharts",
+          "PWA & Service Worker: Dynamic Web App Manifest and client-side caching for offline resilience",
+          "API & Route Handlers: Secure REST endpoints (/api/products, /api/pos/sale, /api/orders, /api/finanzas)",
+          "Hybrid Persistence: Atomic local transactional storage engine synchronized with Supabase Cloud (PostgreSQL)",
+        ],
+      },
+      database: {
+        es: "Persistencia Híbrida Atómica Local + Supabase (PostgreSQL Cloud)",
+        en: "Atomic Local Persistence + Supabase (PostgreSQL Cloud)",
+      },
+    },
+    securityHighlights: {
+      es: [
+        "Acceso al ERP protegido con autenticación de credenciales seguras y tokens criptográficos de sesión",
+        "Aislamiento estricto de rutas administrativas y mutaciones de datos mediante middlewares de servidor",
+        "Protección de datos comerciales: los clientes nunca reciben costos de compra (CMV) ni márgenes mayoristas",
+        "Validación atómica de inventario en servidor antes de procesar ventas o pedidos para prevenir sobreventa",
+        "Generación segura de comprobantes PDF y planillas Excel sin fuga de claves internas de base de datos",
+      ],
+      en: [
+        "ERP administration safeguarded by secure credential verification and cryptographic session tokens",
+        "Strict route middleware isolation protecting administrative panels and data mutation endpoints",
+        "Commercial data obfuscation: wholesale cost of goods (CMV) and internal margins never leak to clients",
+        "Atomic server-side inventory verification before order confirmation preventing overselling",
+        "Safe generation of branded PDF receipts and Excel sheets without exposing internal database keys",
+      ],
+    },
+    challenges: {
+      es: [
+        "Coordinar el inventario en tiempo real entre ventas presenciales de mostrador (POS), tienda online y cotizaciones",
+        "Garantizar disponibilidad instantánea en el mostrador sin bloqueos ni latencias de red externa",
+        "Simular con precisión la rentabilidad neta deduciendo gastos de flete, empaque personalizado y descuentos",
+      ],
+      en: [
+        "Coordinating real-time inventory atomically between physical POS sales, online store checkouts, and quotes",
+        "Ensuring zero-latency counter operations regardless of external network or third-party cloud hiccups",
+        "Accurately simulating net margins after accounting for shipping overhead, custom packaging, and discount tiers",
+      ],
+    },
+    solutions: {
+      es: [
+        "Motor de persistencia atómico transaccional con bloqueos de concurrencia y sincronización en Supabase",
+        "PWA con Service Worker activo que permite operar la interfaz de mostrador a máxima velocidad de respuesta",
+        "Calculadora financiera reactiva que computa CMV, gastos operativos y ROI antes de congelar el presupuesto",
+      ],
+      en: [
+        "Atomic transactional persistence engine with write concurrency guards and Supabase cloud replication",
+        "Installable PWA with active Service Worker enabling lightning-fast counter cashier interactions",
+        "Reactive financial simulator computing CMV, operational logistics, and ROI before finalizing quotes",
+      ],
+    },
+    mainEndpoints: [
+      { method: "GET", path: "/api/products", desc: { es: "Catálogo público con búsqueda predictiva y stock", en: "Public product catalog with predictive search & stock" } },
+      { method: "POST", path: "/api/orders", desc: { es: "Creación y registro correlativo de órdenes online", en: "Online order creation & tracking registration" } },
+      { method: "POST", path: "/api/pos/sale", desc: { es: "Venta rápida en mostrador con descuento de stock y caja", en: "Instant counter POS sale with stock & cash decrement" } },
+      { method: "POST", path: "/api/admin/auth", desc: { es: "Autenticación y validación de sesión para el ERP", en: "Authentication and session check for admin ERP" } },
+      { method: "GET", path: "/api/metrics", desc: { es: "Métricas de ventas, facturación y márgenes para el Dashboard", en: "Sales, revenue, and margin analytics for Dashboard" } },
     ],
   },
   {
@@ -537,12 +663,27 @@ export const SKILLS_DATA: SkillCategory[] = [
     ],
   },
   {
+    title: { es: "Frontend, Fullstack & PWA", en: "Frontend, Fullstack & PWA" },
+    color: "from-teal-600 to-emerald-600",
+    skills: [
+      { name: "Next.js 15 (App Router)" },
+      { name: "React 19 / 18" },
+      { name: "Tailwind CSS v3 / v4" },
+      { name: "PWA & Service Workers" },
+      { name: "Recharts (Analítica)" },
+      { name: "jsPDF & SheetJS (XLSX)" },
+      { name: "Radix UI / Tailwind" },
+      { name: "Responsive & Mobile-First" },
+      { name: "Wouter / Client Routing" },
+    ],
+  },
+  {
     title: { es: "Bases de Datos & Persistencia", en: "Databases & Persistence" },
     color: "from-emerald-600 to-teal-600",
     skills: [
       { name: "PostgreSQL" },
-      { name: "MySQL" },
       { name: "Supabase Cloud" },
+      { name: "MySQL" },
       { name: "H2 Database" },
       { name: "Modelado Relacional (DER)" },
       { name: "SQL Avanzado & Índices" },
@@ -583,12 +724,12 @@ export const SKILLS_DATA: SkillCategory[] = [
     color: "from-amber-600 to-orange-600",
     skills: [
       { name: "Docker & Docker Compose" },
+      { name: "Render & Vercel Deployments" },
       { name: "Linux (Ubuntu / Debian / WSL)" },
-      { name: "Git & GitHub" },
+      { name: "Git & GitHub Workflow" },
       { name: "Swagger / OpenAPI 3" },
       { name: "Maven & Gradle" },
-      { name: "Render & Vercel" },
-      { name: "PWA / Service Workers" },
+      { name: "PWA Manifest & Cache Engine" },
       { name: "IntelliJ IDEA & VS Code" },
     ],
   },
@@ -679,11 +820,26 @@ export const TIMELINE_DATA: TimelineEntry[] = [
     },
     institution: "Becerro Servicios (becerroservicios.com)",
     description: {
-      es: "Diseño, desarrollo y puesta en producción del sistema integral de gestión para taller pesado y servicios agrícolas en Rojas, Buenos Aires. Incluye PWA offline, cotizaciones bimonetarias, firma digital de partes de trabajo y hardening de seguridad scrypt/HMAC.",
-      en: "Designed, engineered, and shipped to production a comprehensive ERP & PWA for agricultural machinery services. Features offline capabilities, bi-currency quotes, digital signatures, and scrypt/HMAC hardening.",
+      es: "Diseño, desarrollo y puesta en producción del sistema integral de gestión para taller pesado y servicios agrícolas en Rojas, Buenos Aires. Incluye web institucional SEO con Schema.org, PWA offline con topbar adaptativa, padrón comercial de clientes, facturación y cotizaciones bimonetarias (ARS/USD), partes de trabajo diarios con firma digital criptográfica del técnico y hardening scrypt/HMAC.",
+      en: "Designed, engineered, and shipped to production a comprehensive ERP & PWA for agricultural machinery services in Buenos Aires. Features SEO landing with Schema.org, offline PWA with adaptive topbar, commercial client directory, bi-currency billing (ARS/USD), technical work orders with cryptographic signatures, and scrypt/HMAC hardening.",
     },
     type: "project",
-    tags: ["TypeScript", "PWA", "Supabase", "Producción", "ERP"],
+    tags: ["TypeScript", "PWA", "Supabase", "Producción", "ERP", "jsPDF"],
+  },
+  {
+    year: "2026",
+    period: "Producción Activa",
+    title: {
+      es: "Yerba Buena · E-Commerce & ERP Criollo en Producción",
+      en: "Yerba Buena · Production E-Commerce & ERP Criollo",
+    },
+    institution: "Yerba Buena (yerbabuenaok.com)",
+    description: {
+      es: "Desarrollo y lanzamiento de la plataforma integral para la cultura matera (yerbabuenaok.com). Storefront de alta velocidad con Next.js 15, React 19, Modo Oscuro Criollo y PWA instalable, sincronizado con un ERP privado con terminal POS de mostrador, cotizador inteligente con cálculo de ROI y ganancia neta en vivo, flujo de caja multianual y exportación en PDF/Excel sobre Supabase Cloud (PostgreSQL).",
+      en: "Engineered and shipped full-scale commercial platform for artisan mate culture (yerbabuenaok.com). High-speed Next.js 15 & React 19 storefront with Criollo Dark Mode and PWA, integrated with a private ERP featuring counter POS terminal, smart quotation ROI simulator, multi-year cash flow, and branded PDF/Excel exports over Supabase Cloud (PostgreSQL).",
+    },
+    type: "project",
+    tags: ["Next.js 15", "React 19", "TypeScript", "Supabase", "PWA", "ERP"],
   },
   {
     year: "2026",
@@ -694,8 +850,8 @@ export const TIMELINE_DATA: TimelineEntry[] = [
     },
     institution: "Disponible para Nuevas Oportunidades",
     description: {
-      es: "Estudiante avanzado de Ingeniería en Informática y Analista en Sistemas. Sólida experiencia demostrable en producción real, Clean Architecture, APIs REST seguras y diseño de software orientado a alta mantenibilidad.",
-      en: "Advanced Computer Engineering & Systems Analyst student. Proven track record in production systems, Clean Architecture, secure REST APIs, and high-maintainability software engineering.",
+      es: "Estudiante avanzado de Ingeniería en Informática y Analista en Sistemas (UNNOBA). Sólida experiencia demostrable en producción real con múltiples sistemas comerciales activos, Clean Architecture, APIs REST seguras y diseño de software orientado a alta mantenibilidad.",
+      en: "Advanced Computer Engineering & Systems Analyst student at UNNOBA. Proven track record in production systems with multiple active commercial platforms, Clean Architecture, secure REST APIs, and high-maintainability software engineering.",
     },
     type: "milestone",
     tags: ["Backend Developer", "Java", "Spring Boot", "Clean Code"],
@@ -743,8 +899,8 @@ export const FAQ_DATA: FAQItem[] = [
       en: "Do you have experience with real production systems and active users?",
     },
     answer: {
-      es: "Sí. Desarrollé y mantengo Becerro Servicios (becerroservicios.com), una plataforma ERP y PWA utilizada diariamente por operarios y administradores en Rojas, Buenos Aires. El sistema gestiona clientes, repuestos pesados, cotizaciones bimonetarias (ARS/USD), facturación y partes de trabajo oficiales con firma digital estampada en comprobantes PDF.",
-      en: "Yes. I designed, shipped, and actively maintain Becerro Servicios (becerroservicios.com), a production ERP and PWA used daily by technicians and administrative staff in Buenos Aires. It oversees client accounts, critical heavy machinery inventory, bi-currency billing, and signed PDF work order receipts.",
+      es: "Sí. Cuento con dos plataformas comerciales completas actualmente en producción activa y con usuarios reales:\n\n1. **Becerro Servicios** (becerroservicios.com): Plataforma ERP y PWA utilizada a diario por operarios y administradores de un taller pesado de maquinaria agrícola en Rojas, Buenos Aires. Gestiona cartera de clientes comercial, repuestos y lubricantes críticos, facturación y cotizaciones bimonetarias (ARS/USD), y partes de trabajo diarios con firma digital criptográfica del técnico estampada en comprobantes oficiales en PDF.\n\n2. **Yerba Buena** (yerbabuenaok.com): E-Commerce y panel ERP integral para la comercialización de mates artesanales y yerbas criollas. Cuenta con storefront público interactivo con checkout dinámico, puntos de retiro físicos gratuitos (Palermo / Belgrano) y Correo Argentino, PWA instalable, terminal POS en mostrador para ventas presenciales y WhatsApp, cotizador inteligente con cálculo de rentabilidad neta y ROI en tiempo real, flujo de fondos multianual y persistencia atómica sincronizada con Supabase Cloud.",
+      en: "Yes. I have engineered and actively maintain two full-scale commercial platforms currently in active daily production:\n\n1. **Becerro Servicios** (becerroservicios.com): Production ERP and field PWA used daily by technicians and management at a heavy agricultural machinery service center in Buenos Aires. Oversees commercial client databases, critical spare parts inventory, bi-currency billing (ARS/USD), and daily technical work orders with cryptographic digital signatures stamped on official PDF receipts.\n\n2. **Yerba Buena** (yerbabuenaok.com): Full-scale E-Commerce and ERP management platform for artisanal mate culture. Features an interactive public storefront with dynamic checkout, physical pickup points (Palermo / Belgrano) and postal shipping, installable PWA, counter POS terminal for physical & WhatsApp sales, real-time ROI and net profit quotation simulator, multi-year cash flow tracking, and atomic persistence synced with Supabase Cloud.",
     },
   },
   {
@@ -808,7 +964,7 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.tag": "PERFIL PROFESIONAL",
     "about.title": "Ingeniería de Software Orientada a Producción",
     "about.p1":
-      "Soy un desarrollador backend apasionado por la construcción de APIs robustas, seguras y altamente escalables. Mi enfoque combina una rigurosa formación académica en Ingeniería en Informática (UNNOBA) con la experiencia práctica de diseñar y desplegar sistemas reales utilizados en entornos comerciales exigentes.",
+      "Soy un desarrollador backend y de sistemas escalables. Mi enfoque combina una rigurosa formación académica en Ingeniería en Informática (UNNOBA) con la experiencia práctica de diseñar, desplegar y operar plataformas comerciales reales en producción activa (como Becerro Servicios y Yerba Buena).",
     "about.p2":
       "Priorizo el modelado claro del dominio, la separación de responsabilidades en capas (Clean Architecture), la seguridad defensiva por diseño y las pruebas automatizadas para garantizar código mantenible a largo plazo.",
     "about.locationTitle": "Ubicación",
@@ -824,9 +980,9 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.lang3": "Portugués (Básico)",
 
     // Metrics
-    "metrics.projectsCount": "4",
+    "metrics.projectsCount": "5",
     "metrics.projectsLabel": "Proyectos Clave",
-    "metrics.projectsDesc": "Producción & Universitarios",
+    "metrics.projectsDesc": "2 en Producción Real + 3 Universitarios",
     "metrics.experienceCount": "4+",
     "metrics.experienceLabel": "Años de Formación",
     "metrics.experienceDesc": "Ingeniería en UNNOBA",
@@ -944,7 +1100,7 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.tag": "PROFESSIONAL PROFILE",
     "about.title": "Production-Oriented Software Engineering",
     "about.p1":
-      "I am a backend developer passionate about building resilient, secure, and highly scalable APIs. My approach unites rigorous university education in Computer Engineering at UNNOBA with hands-on experience designing and operating real-world commercial platforms.",
+      "I am a backend and scalable systems developer. My approach unites rigorous university education in Computer Engineering at UNNOBA with hands-on experience designing, shipping, and operating commercial platforms in active production (including Becerro Servicios and Yerba Buena).",
     "about.p2":
       "I prioritize clear domain modeling, strict layered separation of concerns (Clean Architecture), defensive security by design, and automated testing to guarantee long-term maintainability.",
     "about.locationTitle": "Location",
@@ -960,9 +1116,9 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.lang3": "Portuguese (Basic)",
 
     // Metrics
-    "metrics.projectsCount": "4",
+    "metrics.projectsCount": "5",
     "metrics.projectsLabel": "Key Projects",
-    "metrics.projectsDesc": "Production & Academic",
+    "metrics.projectsDesc": "2 Live in Production + 3 Academic",
     "metrics.experienceCount": "4+",
     "metrics.experienceLabel": "Years of Training",
     "metrics.experienceDesc": "UNNOBA Engineering",
@@ -1203,6 +1359,63 @@ public class ResourceOwnershipValidator {
             .map(song -> song.getArtist().getUserId().equals(principal.getId()))
             .orElse(false);
     }
+}`,
+  },
+  {
+    id: "yerbabuena-profit-simulator",
+    filename: "QuoteProfitabilitySimulator.ts",
+    language: "typescript",
+    title: {
+      es: "Simulador de Rentabilidad & Cotizador POS (Yerba Buena)",
+      en: "Profitability Simulator & POS Quoting Engine (Yerba Buena)",
+    },
+    description: {
+      es: "Cálculo reactivo de CMV, ganancia neta, margen % y conversión atómica a venta POS",
+      en: "Reactive calculation of CMV, net profit, margin % and atomic conversion to POS sale",
+    },
+    code: `export interface ProfitSimulation {
+  subtotalGross: number;
+  totalWholesaleCost: number; // CMV
+  logisticsCost: number;
+  packagingCost: number;
+  discountAmount: number;
+  netRevenue: number;
+  netProfit: number;
+  netMarginPercentage: number;
+  returnOnInvestment: number; // ROI %
+}
+
+export function simulateQuoteProfitability(
+  items: QuoteItem[],
+  logistics: LogisticsConfig,
+  packagingPreset: PackagingOption,
+  discount: DiscountTier
+): ProfitSimulation {
+  const subtotalGross = items.reduce((acc, it) => acc + it.price * it.quantity, 0);
+  const totalWholesaleCost = items.reduce((acc, it) => acc + it.costPrice * it.quantity, 0);
+  
+  const logisticsCost = logistics.paidByStore ? logistics.rate : 0;
+  const packagingCost = packagingPreset.unitCost * items.reduce((acc, it) => acc + it.quantity, 0);
+  const discountAmount = discount.type === 'PERCENT' ? (subtotalGross * discount.value) / 100 : discount.value;
+  
+  const netRevenue = subtotalGross - discountAmount;
+  const totalExpenses = totalWholesaleCost + logisticsCost + packagingCost;
+  const netProfit = netRevenue - totalExpenses;
+  
+  const netMarginPercentage = netRevenue > 0 ? (netProfit / netRevenue) * 100 : 0;
+  const returnOnInvestment = totalExpenses > 0 ? (netProfit / totalExpenses) * 100 : 0;
+
+  return {
+    subtotalGross,
+    totalWholesaleCost,
+    logisticsCost,
+    packagingCost,
+    discountAmount,
+    netRevenue,
+    netProfit,
+    netMarginPercentage: Number(netMarginPercentage.toFixed(2)),
+    returnOnInvestment: Number(returnOnInvestment.toFixed(2)),
+  };
 }`,
   },
 ];
