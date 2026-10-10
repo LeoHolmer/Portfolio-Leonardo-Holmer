@@ -720,7 +720,7 @@ export const SKILLS_DATA: SkillCategory[] = [
     ],
   },
   {
-    title: { es: "DevOps, Cloud & Herramientas", en: "DevOps, Cloud & Tools" },
+    title: { es: "DevOps & Cloud", en: "DevOps & Cloud" },
     color: "from-amber-600 to-orange-600",
     skills: [
       { name: "Docker & Docker Compose" },
@@ -730,7 +730,19 @@ export const SKILLS_DATA: SkillCategory[] = [
       { name: "Swagger / OpenAPI 3" },
       { name: "Maven & Gradle" },
       { name: "PWA Manifest & Cache Engine" },
-      { name: "IntelliJ IDEA & VS Code" },
+      { name: "CI/CD & Observabilidad Sentry" },
+    ],
+  },
+  {
+    title: { es: "Infraestructura IT & Redes", en: "IT Infrastructure & Networking" },
+    color: "from-indigo-600 to-blue-700",
+    skills: [
+      { name: "Redes TCP/IP & Topologías" },
+      { name: "Troubleshooting Hardware & Redes" },
+      { name: "Firma Digital (Token Criptográfico)" },
+      { name: "Sistemas Windows & Linux" },
+      { name: "Almacenamiento Cloud & Backups" },
+      { name: "Estandarización de Procesos IT" },
     ],
   },
 ];
@@ -812,26 +824,41 @@ export const TIMELINE_DATA: TimelineEntry[] = [
     tags: ["Spring Boot 3", "Clean Architecture", "Docker", "Domain Events", "JUnit 5"],
   },
   {
+    year: "2025 - Actualidad",
+    period: "Experiencia Profesional",
+    title: {
+      es: "Becerro Servicios · Full Stack Developer (Freelance)",
+      en: "Becerro Servicios · Full Stack Developer (Freelance)",
+    },
+    institution: "Becerro Servicios (becerroservicios.com) · Rojas, Bs. As.",
+    description: {
+      es: "Diseño, desarrollo y despliegue en producción de plataforma dual (Landing pública y ERP interno) para gestión técnica y comercial de maquinaria pesada. Módulos de inventario con equivalencias cruzadas, alertas de stock crítico, presupuestación bimonetaria (USD/ARS), partes de trabajo diarios con firma digital criptográfica del técnico y exportación PDF oficial.",
+      en: "Designed, engineered, and shipped to production a dual platform (public landing & internal ERP) for heavy machinery services in Buenos Aires. Developed inventory modules with cross-equivalences, critical stock alerts, bi-currency billing (USD/ARS), and digital signature field work orders with branded PDF export.",
+    },
+    type: "project",
+    tags: ["Full Stack", "TypeScript", "React", "Supabase", "PWA", "Render"],
+  },
+  {
+    year: "2025 - Actualidad",
+    period: "Consultoría IT",
+    title: {
+      es: "Vitalis Centro de Salud Integral · IT Consultant & Soporte IT",
+      en: "Vitalis Health Center · IT Consultant & IT Infrastructure Support",
+    },
+    institution: "Vitalis Centro de Salud Integral · Rojas, Bs. As.",
+    description: {
+      es: "Implementación y configuración de conectividad de red TCP/IP, estaciones de trabajo y almacenamiento cloud. Diagnóstico y resolución de incidencias críticas (troubleshooting) de conectividad, hardware y sistemas Windows y Linux. Configuración de seguridad digital mediante firma con token criptográfico y estandarización de manuales operativos.",
+      en: "Implemented TCP/IP networking, enterprise workstations, and secure cloud storage. Diagnosed and resolved mission-critical hardware, network, and Windows/Linux incidents. Configured cryptographic token digital signatures and standardized operational IT manuals.",
+    },
+    type: "milestone",
+    tags: ["Redes TCP/IP", "Linux", "Firma Digital", "Troubleshooting", "Hardware"],
+  },
+  {
     year: "2025 - 2026",
     period: "Producción Activa",
     title: {
-      es: "Becerro Servicios · Despliegue de ERP & PWA Comercial",
-      en: "Becerro Servicios · Commercial ERP & PWA Deployment",
-    },
-    institution: "Becerro Servicios (becerroservicios.com)",
-    description: {
-      es: "Diseño, desarrollo y puesta en producción del sistema integral de gestión para taller pesado y servicios agrícolas en Rojas, Buenos Aires. Incluye web institucional SEO con Schema.org, PWA offline con topbar adaptativa, padrón comercial de clientes, facturación y cotizaciones bimonetarias (ARS/USD), partes de trabajo diarios con firma digital criptográfica del técnico y hardening scrypt/HMAC.",
-      en: "Designed, engineered, and shipped to production a comprehensive ERP & PWA for agricultural machinery services in Buenos Aires. Features SEO landing with Schema.org, offline PWA with adaptive topbar, commercial client directory, bi-currency billing (ARS/USD), technical work orders with cryptographic signatures, and scrypt/HMAC hardening.",
-    },
-    type: "project",
-    tags: ["TypeScript", "PWA", "Supabase", "Producción", "ERP", "jsPDF"],
-  },
-  {
-    year: "2026",
-    period: "Producción Activa",
-    title: {
-      es: "Yerba Buena · E-Commerce & ERP Criollo en Producción",
-      en: "Yerba Buena · Production E-Commerce & ERP Criollo",
+      es: "Yerba Buena · Full Stack Developer & E-Commerce Criollo",
+      en: "Yerba Buena · Full Stack Developer & E-Commerce Criollo",
     },
     institution: "Yerba Buena (yerbabuenaok.com)",
     description: {
@@ -845,8 +872,8 @@ export const TIMELINE_DATA: TimelineEntry[] = [
     year: "2026",
     period: "Actualidad",
     title: {
-      es: "Backend Developer · Nivel Profesional Senior-Ready",
-      en: "Backend Developer · Senior-Ready Professional",
+      es: "Backend & Full Stack Developer · Senior-Ready",
+      en: "Backend & Full Stack Developer · Senior-Ready",
     },
     institution: "Disponible para Nuevas Oportunidades",
     description: {
@@ -854,7 +881,7 @@ export const TIMELINE_DATA: TimelineEntry[] = [
       en: "Advanced Computer Engineering & Systems Analyst student at UNNOBA. Proven track record in production systems with multiple active commercial platforms, Clean Architecture, secure REST APIs, and high-maintainability software engineering.",
     },
     type: "milestone",
-    tags: ["Backend Developer", "Java", "Spring Boot", "Clean Code"],
+    tags: ["Backend Developer", "Java", "Spring Boot", "TypeScript", "Clean Code"],
   },
 ];
 
@@ -899,8 +926,8 @@ export const FAQ_DATA: FAQItem[] = [
       en: "Do you have experience with real production systems and active users?",
     },
     answer: {
-      es: "Sí. Cuento con dos plataformas comerciales completas actualmente en producción activa y con usuarios reales:\n\n1. **Becerro Servicios** (becerroservicios.com): Plataforma ERP y PWA utilizada a diario por operarios y administradores de un taller pesado de maquinaria agrícola en Rojas, Buenos Aires. Gestiona cartera de clientes comercial, repuestos y lubricantes críticos, facturación y cotizaciones bimonetarias (ARS/USD), y partes de trabajo diarios con firma digital criptográfica del técnico estampada en comprobantes oficiales en PDF.\n\n2. **Yerba Buena** (yerbabuenaok.com): E-Commerce y panel ERP integral para la comercialización de mates artesanales y yerbas criollas. Cuenta con storefront público interactivo con checkout dinámico, puntos de retiro físicos gratuitos (Palermo / Belgrano) y Correo Argentino, PWA instalable, terminal POS en mostrador para ventas presenciales y WhatsApp, cotizador inteligente con cálculo de rentabilidad neta y ROI en tiempo real, flujo de fondos multianual y persistencia atómica sincronizada con Supabase Cloud.",
-      en: "Yes. I have engineered and actively maintain two full-scale commercial platforms currently in active daily production:\n\n1. **Becerro Servicios** (becerroservicios.com): Production ERP and field PWA used daily by technicians and management at a heavy agricultural machinery service center in Buenos Aires. Oversees commercial client databases, critical spare parts inventory, bi-currency billing (ARS/USD), and daily technical work orders with cryptographic digital signatures stamped on official PDF receipts.\n\n2. **Yerba Buena** (yerbabuenaok.com): Full-scale E-Commerce and ERP management platform for artisanal mate culture. Features an interactive public storefront with dynamic checkout, physical pickup points (Palermo / Belgrano) and postal shipping, installable PWA, counter POS terminal for physical & WhatsApp sales, real-time ROI and net profit quotation simulator, multi-year cash flow tracking, and atomic persistence synced with Supabase Cloud.",
+      es: "Sí. Cuento con experiencia directa diseñando, desplegando y operando infraestructura y plataformas comerciales en producción activa con usuarios reales:\n\n1. **Becerro Servicios** (becerroservicios.com): Plataforma ERP y PWA utilizada a diario por operarios y administradores de un taller pesado de maquinaria agrícola en Rojas, Buenos Aires. Gestiona cartera de clientes comercial, repuestos críticos, facturación y cotizaciones bimonetarias (ARS/USD), y partes de trabajo diarios con firma digital criptográfica del técnico estampada en PDF.\n\n2. **Yerba Buena** (yerbabuenaok.com): E-Commerce criollo y panel ERP integral con terminal POS de mostrador para ventas presenciales y WhatsApp, cotizador inteligente con cálculo de rentabilidad neta y ROI en tiempo real, flujo de fondos multianual y persistencia en Supabase Cloud (PostgreSQL con Row-Level Security).\n\n3. **Vitalis Centro de Salud Integral**: Consultoría y soporte de infraestructura IT para centro de salud. Configuración de conectividad de red TCP/IP, resolución de incidencias críticas en entornos Windows y Linux, y despliegue de seguridad con firma digital mediante tokens criptográficos para profesionales médicos.",
+      en: "Yes. I have direct experience engineering, deploying, and operating live commercial platforms and enterprise infrastructure for active organizations:\n\n1. **Becerro Servicios** (becerroservicios.com): Production ERP and field PWA used daily by technicians and management at a heavy agricultural machinery service center in Buenos Aires. Oversees commercial client databases, critical spare parts inventory, bi-currency billing (ARS/USD), and technical work orders with cryptographic digital signatures stamped on official PDF receipts.\n\n2. **Yerba Buena** (yerbabuenaok.com): Full-scale artisanal mate E-Commerce & ERP platform featuring counter POS terminal for physical & WhatsApp sales, real-time ROI and net profit quotation simulator, multi-year cash flow tracking, and atomic persistence over Supabase Cloud (PostgreSQL with strict Row-Level Security).\n\n3. **Vitalis Health Center**: Enterprise IT infrastructure and support consulting for a comprehensive healthcare center. Deployed TCP/IP network topology, resolved mission-critical Windows/Linux incidents, and configured digital security using cryptographic hardware token signatures for healthcare professionals.",
     },
   },
   {
@@ -942,13 +969,13 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "nav.viewProjects": "Ver Proyectos",
 
     // Hero
-    "hero.badge": "Disponible para Nuevas Oportunidades • Backend Developer",
+    "hero.badge": "Disponible para Nuevas Oportunidades • Backend & Full Stack Developer",
     "hero.greeting": "Hola, soy",
     "hero.name": "Leonardo Holmer",
-    "hero.title": "Construyendo APIs de Alta Concurrencia y",
-    "hero.titleHighlight": "Sistemas Escalables",
+    "hero.title": "Construyendo APIs de Alta Concurrencia,",
+    "hero.titleHighlight": "Sistemas en Producción & Clean Architecture",
     "hero.description":
-      "Estudiante de Ingeniería en Informática y Analista en Sistemas (UNNOBA). Especializado en arquitectura backend limpia con Java, Spring Boot, PostgreSQL, Docker y sistemas en producción real con TypeScript.",
+      "Estudiante avanzado de Ingeniería en Informática y Analista de Sistemas (UNNOBA). Especializado en arquitectura backend con Java & Spring Boot, despliegues a producción con TypeScript & PostgreSQL, y gestión de infraestructura de redes IT.",
     "hero.cta.projects": "Explorar Proyectos",
     "hero.cta.cv": "Descargar CV (PDF)",
     "hero.cta.linkedin": "LinkedIn",
@@ -964,11 +991,11 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.tag": "PERFIL PROFESIONAL",
     "about.title": "Ingeniería de Software Orientada a Producción",
     "about.p1":
-      "Soy un desarrollador backend y de sistemas escalables. Mi enfoque combina una rigurosa formación académica en Ingeniería en Informática (UNNOBA) con la experiencia práctica de diseñar, desplegar y operar plataformas comerciales reales en producción activa (como Becerro Servicios y Yerba Buena).",
+      "Soy un desarrollador de software enfocado en Backend, Full Stack e infraestructura de sistemas. Mi formación como estudiante avanzado de Ingeniería en Informática y Analista de Sistemas (UNNOBA) se combina con experiencia directa diseñando, desplegando y manteniendo plataformas comerciales en producción activa (como Becerro Servicios y Yerba Buena), así como consultoría IT en centros de salud (Vitalis).",
     "about.p2":
-      "Priorizo el modelado claro del dominio, la separación de responsabilidades en capas (Clean Architecture), la seguridad defensiva por diseño y las pruebas automatizadas para garantizar código mantenible a largo plazo.",
+      "Priorizo el modelado claro del dominio, la separación estricta en capas (Clean Architecture), la seguridad defensiva por diseño (Zero-Trust, RBAC, RLS) y las pruebas automatizadas para construir sistemas escalables, predecibles y de alto rendimiento.",
     "about.locationTitle": "Ubicación",
-    "about.locationValue": "Buenos Aires, Argentina (UTC-3)",
+    "about.locationValue": "Rojas, Buenos Aires, Argentina (Disponible Remoto / Híbrido)",
     "about.educationTitle": "Formación Académica",
     "about.degree1": "Ingeniería en Informática",
     "about.degree1Sub": "UNNOBA · En curso avanzado",
@@ -976,16 +1003,16 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.degree2Sub": "UNNOBA · En curso avanzado",
     "about.languagesTitle": "Idiomas",
     "about.lang1": "Español (Nativo)",
-    "about.lang2": "Inglés (Intermedio · Lectura técnica y documentación fluida)",
+    "about.lang2": "Inglés (Técnico Intermedio · Documentación & lectura fluida)",
     "about.lang3": "Portugués (Básico)",
 
     // Metrics
-    "metrics.projectsCount": "5",
-    "metrics.projectsLabel": "Proyectos Clave",
-    "metrics.projectsDesc": "2 en Producción Real + 3 Universitarios",
-    "metrics.experienceCount": "4+",
+    "metrics.projectsCount": "6+",
+    "metrics.projectsLabel": "Sistemas & Proyectos",
+    "metrics.projectsDesc": "3 en Producción Real + 3 APIs Backend",
+    "metrics.experienceCount": "5+",
     "metrics.experienceLabel": "Años de Formación",
-    "metrics.experienceDesc": "Ingeniería en UNNOBA",
+    "metrics.experienceDesc": "UNNOBA · Ing. en Informática",
     "metrics.testingCount": ">85%",
     "metrics.testingLabel": "Cobertura en Lógica Crítica",
     "metrics.testingDesc": "Tests con JUnit 5 & Mockito",
@@ -1078,13 +1105,13 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "nav.viewProjects": "View Projects",
 
     // Hero
-    "hero.badge": "Available for Opportunities • Backend Developer",
+    "hero.badge": "Available for Opportunities • Backend & Full Stack Developer",
     "hero.greeting": "Hello, I am",
     "hero.name": "Leonardo Holmer",
-    "hero.title": "Architecting Scalable, Concurrent &",
-    "hero.titleHighlight": "High-Performance Systems",
+    "hero.title": "Architecting Scalable, Concurrent APIs &",
+    "hero.titleHighlight": "Production-Grade Clean Systems",
     "hero.description":
-      "Computer Engineering & Systems Analyst student at UNNOBA. Specialized in Clean Backend Architecture with Java, Spring Boot, PostgreSQL, Docker, and real-world production systems with TypeScript.",
+      "Advanced Computer Engineering & Systems Analyst student at UNNOBA. Specialized in Clean Backend Architecture with Java, Spring Boot, PostgreSQL, Docker, fullstack platforms with TypeScript, and enterprise IT infrastructure.",
     "hero.cta.projects": "Explore Projects",
     "hero.cta.cv": "Download CV (PDF)",
     "hero.cta.linkedin": "LinkedIn",
@@ -1100,11 +1127,11 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.tag": "PROFESSIONAL PROFILE",
     "about.title": "Production-Oriented Software Engineering",
     "about.p1":
-      "I am a backend and scalable systems developer. My approach unites rigorous university education in Computer Engineering at UNNOBA with hands-on experience designing, shipping, and operating commercial platforms in active production (including Becerro Servicios and Yerba Buena).",
+      "I am a Software Engineer focused on Backend, Full Stack, and systems infrastructure. My academic training as an advanced Computer Engineering and Systems Analyst student at UNNOBA unites with hands-on experience designing, shipping, and operating commercial systems in active production (including Becerro Servicios and Yerba Buena), alongside IT infrastructure consulting in healthcare environments (Vitalis).",
     "about.p2":
-      "I prioritize clear domain modeling, strict layered separation of concerns (Clean Architecture), defensive security by design, and automated testing to guarantee long-term maintainability.",
+      "I prioritize domain-driven design, Clean Architecture layering, defensive security by design (Zero-Trust, RBAC, RLS), and rigorous automated testing to deliver scalable, predictable, high-performance systems.",
     "about.locationTitle": "Location",
-    "about.locationValue": "Buenos Aires, Argentina (UTC-3)",
+    "about.locationValue": "Rojas, Buenos Aires, Argentina (Available Remote / Hybrid · UTC-3)",
     "about.educationTitle": "Academic Background",
     "about.degree1": "Computer Science Engineering",
     "about.degree1Sub": "UNNOBA · Advanced degree in progress",
@@ -1112,16 +1139,16 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "about.degree2Sub": "UNNOBA · Advanced degree in progress",
     "about.languagesTitle": "Languages",
     "about.lang1": "Spanish (Native)",
-    "about.lang2": "English (Intermediate · Fluent technical documentation & reading)",
+    "about.lang2": "English (Technical Intermediate · Fluent documentation & reading)",
     "about.lang3": "Portuguese (Basic)",
 
     // Metrics
-    "metrics.projectsCount": "5",
-    "metrics.projectsLabel": "Key Projects",
-    "metrics.projectsDesc": "2 Live in Production + 3 Academic",
-    "metrics.experienceCount": "4+",
+    "metrics.projectsCount": "6+",
+    "metrics.projectsLabel": "Key Systems & APIs",
+    "metrics.projectsDesc": "3 Production / Live Clients + 3 Backend APIs",
+    "metrics.experienceCount": "5+",
     "metrics.experienceLabel": "Years of Training",
-    "metrics.experienceDesc": "UNNOBA Engineering",
+    "metrics.experienceDesc": "UNNOBA · Computer Engineering",
     "metrics.testingCount": ">85%",
     "metrics.testingLabel": "Critical Logic Coverage",
     "metrics.testingDesc": "Tested with JUnit 5 & Mockito",

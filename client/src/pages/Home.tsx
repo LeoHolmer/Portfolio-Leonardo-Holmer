@@ -896,9 +896,13 @@ export default function Home() {
                 <h3 className="font-bold text-sm text-slate-900 dark:text-white mb-1">
                   {t(language, "contact.emailCard")}
                 </h3>
-                <p className="text-xs text-slate-500 font-mono break-all mb-4">
+                <a
+                  href="mailto:leonardoholmer1@gmail.com"
+                  className="text-xs text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 font-mono break-all mb-4 block underline-offset-2 hover:underline transition-colors"
+                  title="Enviar correo a leonardoholmer1@gmail.com"
+                >
                   leonardoholmer1@gmail.com
-                </p>
+                </a>
               </div>
               <Button
                 onClick={copyEmailToClipboard}
