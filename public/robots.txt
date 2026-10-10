@@ -1,0 +1,5 @@
+# Robots.txt for Leonardo Holmer Portfolio
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-leonardo-holmer.vercel.app/sitemap.xml

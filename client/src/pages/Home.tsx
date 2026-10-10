@@ -203,8 +203,10 @@ export default function Home() {
 
             {/* CV Download CTA */}
             <a
-              href="/Leonardo_Holmer_CV.pdf"
-              download="Leonardo_Holmer_CV.pdf"
+              href="/CV_Leonardo_Holmer.pdf"
+              download="CV_Leonardo_Holmer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs shadow-sm transition-all hover:scale-105"
             >
               <Download className="w-3.5 h-3.5" />
@@ -257,8 +259,10 @@ export default function Home() {
             ))}
             <div className="pt-2">
               <a
-                href="/Leonardo_Holmer_CV.pdf"
-                download="Leonardo_Holmer_CV.pdf"
+                href="/CV_Leonardo_Holmer.pdf"
+                download="CV_Leonardo_Holmer.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white font-medium text-xs shadow-sm"
               >
                 <Download className="w-4 h-4" />
@@ -322,8 +326,10 @@ export default function Home() {
             </Button>
 
             <a
-              href="/Leonardo_Holmer_CV.pdf"
-              download="Leonardo_Holmer_CV.pdf"
+              href="/CV_Leonardo_Holmer.pdf"
+              download="CV_Leonardo_Holmer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-slate-400 dark:hover:border-slate-600 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold text-sm transition-all hover:scale-105 shadow-sm"
             >
               <Download className="w-4 h-4" />
@@ -969,8 +975,10 @@ export default function Home() {
                 <p className="text-xs text-slate-500 font-mono mb-4">PDF Oficial 2026</p>
               </div>
               <a
-                href="/Leonardo_Holmer_CV.pdf"
-                download="Leonardo_Holmer_CV.pdf"
+                href="/CV_Leonardo_Holmer.pdf"
+                download="CV_Leonardo_Holmer.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs shadow-sm transition-colors"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -984,13 +992,40 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-slate-200 dark:border-slate-800 py-8 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-950">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
             <span className="font-bold text-slate-800 dark:text-slate-200">Leonardo Holmer</span>
             <span>·</span>
             <span>© 2026 {t(language, "footer.rights")}</span>
+            <span>·</span>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("portfolio_open_legal", { detail: "privacy" }))}
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors underline cursor-pointer"
+            >
+              {language === "es" ? "Privacidad" : "Privacy"}
+            </button>
+            <span>·</span>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("portfolio_open_legal", { detail: "terms" }))}
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors underline cursor-pointer"
+            >
+              {language === "es" ? "Términos" : "Terms"}
+            </button>
           </div>
 
-          <p>{t(language, "footer.builtWith")}</p>
+          <div className="flex items-center gap-4 flex-wrap justify-center">
+            <a
+              href="/CV_Leonardo_Holmer.pdf"
+              download="CV_Leonardo_Holmer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              PDF CV
+            </a>
+            <p>{t(language, "footer.builtWith")}</p>
+          </div>
         </div>
       </footer>
     </div>

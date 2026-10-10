@@ -1,13 +1,41 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
-  "env": {
-    "VITE_APP_ID": "Portfolio-Leonardo-Holmer",
-    "VITE_APP_TITLE": "Leonardo Holmer - Backend Developer",
-    "VITE_ANALYTICS_ENDPOINT": "",
-    "VITE_ANALYTICS_WEBSITE_ID": "",
-    "VITE_FRONTEND_FORGE_API_URL": "",
-    "VITE_FRONTEND_FORGE_API_KEY": ""
-  }
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: https://va.vercel-scripts.com; object-src 'none'; base-uri 'self'; form-action 'self' https:; frame-ancestors 'none';"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" },
+        { "key": "Content-Disposition", "value": "inline; filename=\"CV_Leonardo_Holmer.pdf\"" }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!.*\\.[\\w]+$|assets/).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
-
