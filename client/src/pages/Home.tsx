@@ -245,20 +245,6 @@ export default function Home() {
             >
               {theme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
             </button>
-            <a
-              href={`https://wa.me/5492475400532?text=${encodeURIComponent(
-                language === "es"
-                  ? "¡Hola Leonardo! Vi tu portafolio y me gustaría conversar sobre una oportunidad laboral / proyecto."
-                  : "Hi Leonardo! I saw your portfolio and would like to discuss a job opportunity or project."
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp (+54 9 2475 400532)"
-              className="p-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-              title="WhatsApp"
-            >
-              <WhatsAppIcon className="w-4 h-4 fill-current" />
-            </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300"
@@ -288,29 +274,16 @@ export default function Home() {
                 {navItem.label}
               </button>
             ))}
-            <div className="pt-2 grid grid-cols-2 gap-2">
+            <div className="pt-2">
               <a
                 href="/CV_Leonardo_Holmer.pdf"
                 download="CV_Leonardo_Holmer.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-blue-600 text-white font-medium text-xs shadow-sm"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white font-medium text-xs shadow-sm"
               >
                 <Download className="w-4 h-4" />
                 <span>{t(language, "hero.cta.cv")}</span>
-              </a>
-              <a
-                href={`https://wa.me/5492475400532?text=${encodeURIComponent(
-                  language === "es"
-                    ? "¡Hola Leonardo! Vi tu portafolio y me gustaría conversar sobre una oportunidad laboral / proyecto."
-                    : "Hi Leonardo! I saw your portfolio and would like to discuss a job opportunity or project."
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold text-xs shadow-sm"
-              >
-                <WhatsAppIcon className="w-4 h-4 fill-current" />
-                <span>WhatsApp</span>
               </a>
             </div>
           </div>
