@@ -1082,10 +1082,13 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "contact.linkedinCard": "Perfil de LinkedIn",
     "contact.githubCard": "Código en GitHub",
     "contact.cvCard": "Currículum Vitae",
+    "contact.whatsappCard": "WhatsApp Directo",
     "contact.btn.email": "Copiar Email",
     "contact.btn.linkedin": "Conectar en LinkedIn",
     "contact.btn.github": "Explorar GitHub",
     "contact.btn.cv": "Descargar CV en PDF",
+    "contact.btn.whatsapp": "Chatear por WhatsApp",
+    "nav.whatsapp": "WhatsApp",
 
     // Footer
     "footer.rights": "Todos los derechos reservados.",
@@ -1218,10 +1221,13 @@ export const UI_TRANSLATIONS: Record<Language, Record<string, string>> = {
     "contact.linkedinCard": "LinkedIn Profile",
     "contact.githubCard": "GitHub Repository",
     "contact.cvCard": "Curriculum Vitae",
+    "contact.whatsappCard": "Direct WhatsApp",
     "contact.btn.email": "Copy Email",
     "contact.btn.linkedin": "Connect on LinkedIn",
     "contact.btn.github": "Explore GitHub",
     "contact.btn.cv": "Download CV (PDF)",
+    "contact.btn.whatsapp": "Chat on WhatsApp",
+    "nav.whatsapp": "WhatsApp",
 
     // Footer
     "footer.rights": "All rights reserved.",

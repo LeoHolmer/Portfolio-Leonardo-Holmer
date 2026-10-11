@@ -37,7 +37,7 @@ export function CookieBanner({ onOpenPrivacy }: CookieBannerProps) {
     <aside
       role="region"
       aria-label="Consentimiento de cookies"
-      className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 animate-in slide-in-from-bottom-4 duration-300"
+      className="fixed bottom-4 left-4 right-4 md:left-4 md:right-auto md:max-w-md z-40 animate-in slide-in-from-bottom-4 duration-300"
     >
       <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-2xl">
         <div className="flex items-start gap-3.5">

@@ -12,6 +12,7 @@ import TermsPage from "./pages/TermsPage";
 import CookieBanner from "./components/CookieBanner";
 import LegalModal from "./components/LegalModal";
 import Analytics from "./components/Analytics";
+import WhatsAppButton from "./components/WhatsAppButton";
 import { Suspense, useState, useEffect } from "react";
 
 /**
@@ -91,6 +92,7 @@ function App() {
               onOpenChange={setLegalModalOpen}
               initialTab={legalTab}
             />
+            <WhatsAppButton />
             <Analytics />
           </TooltipProvider>
         </ThemeProvider>
